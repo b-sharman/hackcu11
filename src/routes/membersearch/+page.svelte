@@ -15,8 +15,6 @@ let searchText = $state('');
 
 let results = $derived(fuse.search(searchText));
 
-$inspect(searchText, results);
-
 </script>
 
 <main class="max-w-[1000px] mx-auto">

@@ -21,7 +21,7 @@ $inspect(searchText, results);
 
 <main class="max-w-[1000px] mx-auto">
   <input type="search" placeholder="Search Congress members..." bind:value={searchText} />
-  {#each results as result}
+  {#each results.slice(0, 5) as result}
     <p>{result.item.name}</p>
   {/each}
 

@@ -139,5 +139,12 @@ function getStatus(bill) {
                 {/await}
             </ul>
         </div>
+        <div class="p-4">
+            <h3 class="mb-2 text-lg font-bold">Track Bill</h3>
+            <ul class="space-y-2">
+                <input type="email" class="w-[300px] h-full px-5 py-2 rounded-full border border-1.5 border-gray-500 outline-accent-bg text-md" placeholder="Enter your email">
+                <button class="px-5 py-2 m-2 bg-purple-500 text-white rounded hover:cursor-pointer">Subscribe</button>
+            </ul>
+        </div>
     </main>
 </div>

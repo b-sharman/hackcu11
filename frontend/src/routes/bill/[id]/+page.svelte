@@ -9,19 +9,20 @@ let bill_promise = $derived.by(async () => {
 });
 </script>
 
-<!-- <header>
-    <h2>
+<header class="font-bold bg-purple-200 py-6 px-2 flex justify-center">
+    <span></span>
+    <h2 class="text-2xl max-w-3xl">
         {#await bill_promise}
         Loading...
         {:then bill}
         {bill.title}
         {/await}
     </h2>
-</header> -->
-
-{#await bill_promise}
-<p>Loading</p>
-{:then bill}
-    <h1>{bill.title}</h1>
-    {@html bill.summary}
-{/await}
+</header>
+<main>
+    {#await bill_promise}
+        Loading...
+    {:then bill}
+        {@html bill.summary}
+    {/await}
+</main>

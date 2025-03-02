@@ -8,8 +8,10 @@ import pickle
 import pandas as pd
 import random
 
-with open('model.pkl', 'rb') as f:
+filename = './model/model.pkl'
+with open(filename, 'rb') as f:
     model = pickle.load(f)
+#print(type(model))
 
 app = Flask(__name__)
 load_dotenv(".env.local")
@@ -83,8 +85,8 @@ def summary():
 def predict():
     df = pd.read_csv('newest_bills.csv')
     rand = random.randint(0, len(df))
-    bill = df.iloc[rand]
-    prediction = model.predict([bill])
+    bill = df.iloc[[rand]]
+    prediction = model.predict(bill)
     if prediction[0] == 0:
         prediction = 'No'
     else:

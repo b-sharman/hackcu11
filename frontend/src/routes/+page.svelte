@@ -35,9 +35,9 @@ $inspect(searchText, results_promise);
       <p>Loading...</p>
       {:then results}
         {#if results.length > 0}
-          {#each results.slice(0, 5) as result}
+          {#each results as result}
             {console.log(result)}
-            <p>{result.title}</p>
+            <p>{@html result.title.replace(searchText, `<strong>${searchText}</strong>`)}</p>
           {/each}
         {:else if searchText === ""}
           <p>Search results will appear here</p>

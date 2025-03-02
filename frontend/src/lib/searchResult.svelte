@@ -32,8 +32,8 @@ async function expand() {
         <p class="text-lg font-bold">
           {@html result.title.replaceAll(
             new RegExp(searchText, 'gi'),
-            match => `<span class="bg-yellow-200">${match}</span>`)
-          }
+            match => `<span class="bg-yellow-200">${match}</span>`
+          )}
         </p>
         <p class="text-sm text-gray-600">{new Intl.DateTimeFormat().format(new Date(result.date_introduced))}</p>
       </div>

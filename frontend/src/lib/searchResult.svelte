@@ -4,9 +4,15 @@ import { slide } from "svelte/transition";
 let { result, searchText } = $props();
 
 let expanded: boolean = $state(false);
+let summary: string = $state('');
 
 async function expand() {
   // put fetch call here eventually for the summary
+  const json = await (await fetch(
+    `http://localhost:5000/summary?id=${result.id}`,
+  )).json();
+  console.log(json);
+  summary = json['summary'];
   expanded = !expanded;
 }
 </script>
@@ -17,8 +23,10 @@ async function expand() {
     <div class="flex flex-row gap-8">
       <div class="basis-full">
         <p class="text-lg font-bold">
-          {@html result.title.replaceAll(new RegExp(searchText, 'gi'), `<span class="bg-yellow-200">${searchText}</span>`)}
-          <!-- {@html result.title.replace(searchText, `<span class="bg-yellow-200">${searchText}</span>`)} -->
+          {@html result.title.replaceAll(
+            new RegExp(searchText, 'gi'),
+            match => `<span class="bg-yellow-200">${match}</span>`)
+          }
         </p>
         <p class="text-sm text-gray-600">{new Intl.DateTimeFormat().format(new Date(result.date_introduced))}</p>
       </div>
@@ -31,15 +39,7 @@ async function expand() {
 
     {#if expanded}
       <div class="mt-4" in:slide out:slide>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magnam aliquam quaerat
-          voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri
-          tamen permagna accessio potest, si aliquod aeternum et infinitum
-          impendere malum nobis opinemur. Quod idem licet transferre in
-          voluptatem, ut postea variari voluptas distinguique possit, augeri
-          amplificarique non possit. At etiam.
-        </p>
+        {@html summary}
         <div class="mt-2">
           <a class="text-sm text-blue-600 underline" target="_blank" href={result.url}>
             {result.url}

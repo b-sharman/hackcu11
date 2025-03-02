@@ -16,8 +16,8 @@ let results_promise = $derived.by(async () => {
 </script>
 
 <header class="p-8 bg-violet-200 *:text-center">
-  <h1 class="text-2xl m-4 font-bold">App Name</h1>
-  <p class="text-gray-600">Visualize public data from the U.S. Congress</p>
+  <h1 class="text-2xl m-4"><span class="font-bold">Bill</span>board</h1>
+  <p class="text-gray-600">Track pending and historical bills from from the U.S. Congress</p>
 </header>
 
 <main class="max-w-[1000px] mx-auto px-4 pb-4">

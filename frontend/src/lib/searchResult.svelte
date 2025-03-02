@@ -43,7 +43,7 @@ async function expand() {
     </div>
 
     {#if expanded}
-      <div class="mt-4" in:slide out:slide>
+      <div class="mt-4" transition:slide>
         {@html summary}
 
         <div class="flex flex-row mt-2 gap-8">

@@ -2,6 +2,7 @@
 import { onMount } from 'svelte';
 import type { PageProps } from './$types';
 import SearchResult from '$lib/searchResult.svelte';
+  import { results } from '$lib/searchResultState.svelte';
 
 let { data }: PageProps = $props();
 
@@ -9,6 +10,7 @@ let pd = $state(undefined);
 
 onMount(async () => {
   pd = await (await fetch(`http://localhost:5000/member?bioguideId=${data.bioguideId}`)).json();
+  results.results = pd.bills.map(bill => bill.id);
 });
 </script>
 

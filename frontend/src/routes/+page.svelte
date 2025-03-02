@@ -1,6 +1,6 @@
 <script lang='ts'>
 import SearchResult from '$lib/searchResult.svelte';
-
+import { results } from '$lib/searchResultState.svelte';
 export const prerender = false;
 
 let searchText = $state('');
@@ -10,9 +10,10 @@ let results_promise = $derived.by(async () => {
   const res = await fetch(
     `http://localhost:5000/search?q=${searchText}`,
   );
-  return await res.json();
+  let data: Array<any> = await res.json();
+  results.results = data.map(result => result.id);
+  return data;
 });
-
 </script>
 
 <header class="p-8 bg-purple-200 *:text-center">
@@ -54,3 +55,5 @@ let results_promise = $derived.by(async () => {
       <p class="m-4"><span class="text-red-500">Error:</span> {error.message}</p>
   {/await}
 </main>
+
+

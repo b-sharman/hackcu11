@@ -1,5 +1,6 @@
 <script>
-  import ExternalUrl from '$lib/externalUrl.svelte';
+import ExternalUrl from '$lib/externalUrl.svelte';
+import { results } from '$lib/searchResultState.svelte.js';
 
 let { data } = $props();
 
@@ -22,7 +23,6 @@ function getStatus(bill) {
     }
 }
 </script>
-
 <header class="bg-purple-200 py-6 px-2">
     <h1 class="text-2xl max-w-3xl mx-auto font-bold">
         {#await bill_promise}
@@ -141,3 +141,23 @@ function getStatus(bill) {
         </div>
     </main>
 </div>
+<div>
+    {#if results.results[results.results.findIndex(id => id == +data.bill_id) - 1] != undefined }
+        <div class="fixed left-0 top-0 bottom-0 flex flex-col justify-center p-4">
+            <a href={`/bill/${results.results[results.results.findIndex(id => id == +data.bill_id) - 1]}`} aria-label="Previous bill">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+            </svg>
+            </a>
+        </div>
+    {/if}
+    {#if results.results[results.results.findIndex(id => id == +data.bill_id) + 1] != undefined }
+        <div class="fixed right-0 top-0 bottom-0 flex flex-col justify-center p-4">
+            <a href={`/bill/${results.results[results.results.findIndex(id => id == +data.bill_id) + 1]}`} aria-label="Next bill">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
+            </a>
+        </div>
+    {/if}
+  </div>

@@ -43,7 +43,6 @@ def get_summary(bill):
 
 def get_actions(bill):
     actions = requests.get(f"https://api.congress.gov/v3/bill/{bill['congress']}/{bill['type'].lower()}/{bill['number']}/actions?api_key={os.getenv('VITE_API_KEY')}&format=json").json()
-    print([action for action in actions["actions"] if not ('actionCode' in action and action['actionCode'] == "Intro-H")])
     return [action for action in actions["actions"] if not ('actionCode' in action and action['actionCode'] == "Intro-H")]
 
 def map_to_dict(bill):
@@ -110,6 +109,7 @@ def bill():
         'subjects': get_subjects(bill),
         'summary': get_summary(bill),
         'actions': get_actions(bill),
+        'url': get_url(bill),
         'data': bill_data,
     })
     res.headers.add('Access-Control-Allow-Origin', '*')

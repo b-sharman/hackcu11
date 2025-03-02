@@ -1,6 +1,7 @@
 <script lang='ts'>
 import { beforeNavigate, pushState } from '$app/navigation';
 import { page } from '$app/state';
+  import SankeyPlot from '$lib/sankeyPlot.svelte';
 import SearchResult from '$lib/searchResult.svelte';
 import { results } from '$lib/searchResultState.svelte';
 
@@ -61,5 +62,8 @@ let results_promise = $derived.by(async () => {
       {:catch error}
         <p class="m-4"><span class="text-red-500">Error:</span> {error.message}</p>
     {/await}
+    <section class="mt-8">
+      <SankeyPlot />
+    </section>
   </main>
 </div>

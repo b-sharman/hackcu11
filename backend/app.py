@@ -96,6 +96,7 @@ def predict():
         prediction = 'Yes'
     return jsonify({'prediction': prediction})
 
+
 @app.route("/bill")
 def bill():
     id = request.args.get('id')

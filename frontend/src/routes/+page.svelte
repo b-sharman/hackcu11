@@ -15,7 +15,7 @@ let results_promise = $derived.by(async () => {
 
 </script>
 
-<header class="p-8 bg-purple-200 *:text-center">
+<header class="p-8 bg-violet-200 *:text-center">
   <h1 class="text-2xl m-4 font-bold">App Name</h1>
   <p class="text-gray-600">Visualize public data from the U.S. Congress</p>
 </header>
@@ -24,7 +24,7 @@ let results_promise = $derived.by(async () => {
   <div class="my-16 flex justify-center gap-4">
     <input
       bind:value={searchText}
-      class="w-[400px] h-full px-4 py-1.5 rounded-full border border-2 border-gray-500 outline-accent-bg text-lg"
+      class="w-[400px] h-full px-5 py-2.5 rounded-full border border-2 border-gray-500 outline-accent-bg text-lg"
       placeholder="Search for a bill to learn more about it"
       type="text"
     />

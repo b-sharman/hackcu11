@@ -33,8 +33,8 @@ async function expand() {
 
     <div class="flex flex-row gap-8">
       <div class="basis-full">
-        <p class="mb-1 text-xs text-gray-600">{READABLE_STRS[result.type]}{result.number}</p>
-        <p class="text-lg font-bold">
+        <p class="text-xs text-gray-600">{READABLE_STRS[result.type]}{result.number}</p>
+        <p class="my-1 text-lg font-bold">
           {@html result.title.replaceAll(
             new RegExp(searchText, 'gi'),
             match => `<span class="bg-yellow-200">${match}</span>`

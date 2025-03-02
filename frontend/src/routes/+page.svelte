@@ -10,7 +10,7 @@ beforeNavigate(() => {
 
 export const prerender = false;
 
-let searchText = $state(page.state.searchText);
+let searchText = $state(page.state.searchText !== undefined ? page.state.searchText : '');
 
 let results_promise = $derived.by(async () => {
   if (searchText === '') return [];

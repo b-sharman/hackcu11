@@ -35,6 +35,9 @@ def get_summary(bill):
     response = requests.get(f"https://api.congress.gov/v3/bill/{bill['congress']}/{bill['type'].lower()}/{bill['number']}/summaries?api_key={os.getenv('VITE_API_KEY')}&format=json&limit=1").json()
     return response['summaries'][0]['text']
 
+def get_actions(bill):
+    return requests.get(f"https://api.congress.gov/v3/bill/{bill['congress']}/{bill['type'].lower()}/{bill['number']}/actions?api_key={os.getenv('VITE_API_KEY')}&format=json").json()
+
 def map_to_dict(bill):
     return {
         'id': bill[0],
@@ -87,6 +90,7 @@ def bill():
     res = jsonify(bill | {
         'subjects': get_subjects(bill),
         'summary': get_summary(bill),
+        'actions': get_actions(bill),
         'data': bill_data,
     })
     res.headers.add('Access-Control-Allow-Origin', '*')

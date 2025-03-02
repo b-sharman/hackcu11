@@ -50,5 +50,4 @@ let results_promise = $derived.by(async () => {
         <p class="m-4"><span class="text-red-500">Error:</span> {error.message}</p>
     {/await}
   </div>
-
 </main>

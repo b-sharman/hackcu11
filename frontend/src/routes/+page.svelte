@@ -15,7 +15,7 @@ let results_promise = $derived.by(async () => {
 
 </script>
 
-<header class="p-8 bg-purple-200 *:text-center">
+<header class="p-8 bg-violet-200 *:text-center">
   <h1 class="text-2xl m-4 font-bold">App Name</h1>
   <p class="text-gray-600">Visualize public data from the U.S. Congress</p>
 </header>
@@ -24,29 +24,33 @@ let results_promise = $derived.by(async () => {
   <div class="my-16 flex justify-center gap-4">
     <input
       bind:value={searchText}
-      class="w-[400px] h-full px-4 py-1.5 rounded-full border border-2 border-gray-500 outline-accent-bg text-lg"
+      class="w-[400px] h-full px-5 py-2.5 rounded-full border border-2 border-gray-500 outline-accent-bg text-lg"
       placeholder="Search for a bill to learn more about it"
       type="text"
     />
   </div>
 
-  <div class="rounded-xl border border-gray-200 overflow-hidden">
-    {#await results_promise}
-      <p class="m-4">Loading...</p>
-      {:then results}
-        {#if results.length > 0}
-          <ul class="divide-y divide-gray-200">
-            {#each results as result}
-              <SearchResult {result} {searchText} />
-            {/each}
-          </ul>
-        {:else if searchText === ""}
-          <p class="m-4">Search results will appear here</p>
-        {:else}
-          <p class="m-4">No results found</p>
-        {/if}
-      {:catch error}
-        <p class="m-4"><span class="text-red-500">Error:</span> {error.message}</p>
-    {/await}
-  </div>
+  {#await results_promise}
+    <div class="w-full text-center">
+      <p class="text-gray-700">Loading...</p>
+    </div>
+    {:then results}
+      {#if results.length > 0}
+        <ul class="rounded-xl border border-gray-200 overflow-hidden divide-y divide-gray-200">
+          {#each results as result}
+            <SearchResult {result} {searchText} />
+          {/each}
+        </ul>
+      {:else if searchText === ""}
+        <div class="w-full text-center">
+          <p class="text-gray-700">Search results will appear here</p>
+        </div>
+      {:else}
+        <div class="w-full text-center">
+          <p class="text-gray-700">No results found</p>
+        </div>
+      {/if}
+    {:catch error}
+      <p class="m-4"><span class="text-red-500">Error:</span> {error.message}</p>
+  {/await}
 </main>

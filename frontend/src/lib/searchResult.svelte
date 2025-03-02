@@ -12,14 +12,7 @@ async function expand() {
   const json = await (await fetch(
     `http://localhost:5000/summary?id=${result.id}`,
   )).json();
-  if (json['exists']) {
-    // Remove the title if it's included in the summary
-    summary = json['summary']
-      .replace(new RegExp(`<b>${result.title}</b>`, 'i'), '')
-      .replace(new RegExp(`<strong>${result.title}</strong>`, 'i'), '');
-  } else {
-    summary = 'No summary is available for this bill.';
-  }
+  summary = json['exists'] ? json['summary'] : 'No summary is available for this bill.'
   expanded = !expanded;
 }
 </script>
@@ -50,7 +43,7 @@ async function expand() {
 
         <div class="flex flex-row mt-2 gap-8">
           <div class="grow">
-            <ExternalUrl url={result.url} />
+            <ExternalUrl url={result.url}>View on Congress.gov</ExternalUrl>
           </div>
           <div>
             <a class="mr-4 text-sm text-blue-600 underline" href="/bill/{result.id}">Learn more about this bill</a>

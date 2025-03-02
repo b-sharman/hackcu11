@@ -6,7 +6,9 @@ from dotenv import load_dotenv
 import os
 import pickle
 import pandas as pd
-import datetime
+import re
+
+SUMMARY_TITLE = re.compile('<(b|strong)>.*</(b|strong)>', re.I)
 
 filename = './model/model.pkl'
 with open(filename, 'rb') as f:
@@ -37,7 +39,10 @@ def get_subjects(bill):
 def get_summary(bill):
     response = requests.get(f"https://api.congress.gov/v3/bill/{bill['congress']}/{bill['type'].lower()}/{bill['number']}/summaries?api_key={os.getenv('VITE_API_KEY')}&format=json&limit=1").json()
     try:
-        return {'exists': True, 'summary': response['summaries'][0]['text']}
+        return {
+            'exists': True,
+            'summary': SUMMARY_TITLE.sub('', response['summaries'][0]['text'])
+        }
     except:
         return {'exists': False}
 
@@ -151,3 +156,41 @@ def bill():
     res.headers.add('Access-Control-Allow-Origin', '*')
     return res
 
+@app.route("/member")
+def member():
+    bioguideId = request.args.get('bioguideId')
+    db = sqlite3.connect('database.db')
+    cur = db.cursor()
+
+    # member_data = {
+    #     x | {
+    #         "partyTag": x["partyHistory"][-1]["partyAbbreviation"] + "-" + x["terms"][-1]["stateCode"],
+    #     }
+    #     for x in requests.get(f"https://api.congress.gov/v3/member/{bioguideId}?api_key={os.getenv('VITE_API_KEY')}&format=json").json()
+    # }
+
+    member_data = requests.get(f"https://api.congress.gov/v3/member/{bioguideId}?api_key={os.getenv('VITE_API_KEY')}&format=json").json()["member"]
+    party_abbrev = member_data["partyHistory"][-1]["partyAbbreviation"]
+    state_code = member_data["terms"][-1]["stateCode"]
+    title = member_data["terms"][-1]["memberType"]
+    honorific = member_data["honorificName"]
+    name = member_data["directOrderName"]
+    member_data["fullName"] = f"{title} {honorific} {name} ({party_abbrev}-{state_code})"
+
+    sponsored_data = requests.get(f"https://api.congress.gov/v3/member/{bioguideId}/sponsored-legislation?limit=250&api_key={os.getenv('VITE_API_KEY')}&format=json").json()['sponsoredLegislation']
+    # For some reason, sponsored-legislation's output is frequently missing bill types and numbers. We work around this by simply omitting such bills.
+    sponsored_data = [d for d in sponsored_data if 'type' in d and 'number' in d and 'congress' in d]
+
+    bills = [
+        (b:=map_to_dict(bill)) | {'url': get_url(b)}
+        for sd in sponsored_data
+        if 'type' in sd and 'number' in sd and 'congress' in sd
+        for bill in cur.execute(
+            r"SELECT * FROM bills WHERE (type=? AND number=? AND congress=?) ORDER BY congress DESC",
+            [sd['type'], sd['number'], sd['congress']]
+        ).fetchall()
+    ]
+
+    res = jsonify({"member": member_data, "bills": bills})
+    res.headers.add('Access-Control-Allow-Origin', '*')
+    return res

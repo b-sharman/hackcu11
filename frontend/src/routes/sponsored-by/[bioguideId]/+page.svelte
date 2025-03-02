@@ -1,8 +1,9 @@
 <script lang="ts">
 import { onMount } from 'svelte';
 import type { PageProps } from './$types';
+import Header from '$lib/header.svelte';
 import SearchResult from '$lib/searchResult.svelte';
-  import { results } from '$lib/searchResultState.svelte';
+import { results } from '$lib/searchResultState.svelte';
 
 let { data }: PageProps = $props();
 
@@ -14,11 +15,12 @@ onMount(async () => {
 });
 </script>
 
-<header class="bg-linear-to-br from-indigo-800 to-purple-900 py-6 px-2">
-  <h1 class="text-2xl max-w-[1000px] mx-auto my-8 font-bold text-white">
+<Header>
+  <a href="/" class="-mt-1 mb-6 px-4 text-"><span class="font-bold">Bill</span>board</a>
+  <h1 class="w-full max-w-[1000px] mx-auto my-8 text-2xl text-left font-bold text-white">
     {pd === undefined ? "Loading..." : `Bills Sponsored by ${pd.member.fullName}`}
   </h1>
-</header>
+</Header>
 
 <div class="mt-8 mb-4 flex justify-center">
   <main class="max-w-[1000px] mx-4">

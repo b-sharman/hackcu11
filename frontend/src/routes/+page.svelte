@@ -1,7 +1,8 @@
 <script lang='ts'>
 import { beforeNavigate, pushState } from '$app/navigation';
 import { page } from '$app/state';
-  import SankeyPlot from '$lib/sankeyPlot.svelte';
+import Header from '$lib/header.svelte';
+import SankeyPlot from '$lib/sankeyPlot.svelte';
 import SearchResult from '$lib/searchResult.svelte';
 import { results } from '$lib/searchResultState.svelte';
 
@@ -12,6 +13,8 @@ beforeNavigate(() => {
 export const prerender = false;
 
 let searchText = $state(page.state.searchText !== undefined ? page.state.searchText : '');
+
+$inspect(searchText);
 
 let results_promise = $derived.by(async () => {
   if (searchText === '') return [];
@@ -24,17 +27,18 @@ let results_promise = $derived.by(async () => {
 });
 </script>
 
-<header class="bg-linear-to-br from-indigo-800 to-purple-900 py-6 px-2 flex flex-col items-center">
-  <p class="my-12 text-lg text-center text-white">Track pending and historical bills from the U.S. Congress</p>
+<Header>
+  <a href="/" class="my-16 px-4 text-6xl text-"><span class="font-bold">Bill</span>board</a>
+  <p class="my-8 text-lg text-center text-white">Track pending and historical bills from the U.S. Congress</p>
   <div class="my-8">
     <input
       bind:value={searchText}
-      class="w-[400px] h-full px-5 py-2.5 rounded-full text-xl bg-white placeholder:text-gray-600"
+      class="w-[400px] h-full px-5 py-2.5 rounded-full text-xl bg-white text-black placeholder:text-gray-600"
       placeholder="Search for a bill to learn more about it"
       type="text"
     />
   </div>
-</header>
+</Header>
 
 <div class="mt-8 mb-4 flex justify-center">
   <main class="w-full max-w-[1000px] mx-4">

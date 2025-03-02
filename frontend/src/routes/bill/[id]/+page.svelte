@@ -1,5 +1,6 @@
 <script>
 import ExternalUrl from '$lib/externalUrl.svelte';
+import Header from '$lib/header.svelte';
 import { results } from '$lib/searchResultState.svelte.js';
 import { Timeline, TimelineItem, TimelineSeparator, TimelineDot, TimelineConnector, TimelineContent } from 'svelte-vertical-timeline';
 
@@ -63,26 +64,29 @@ async function subscribe() {
 }
 </script>
 
-<header class="bg-linear-to-br from-indigo-800 to-purple-900 py-6 px-2">
-    <h1 class="text-2xl text-white max-w-[1000px] mx-auto font-bold">
-        {#await bill_promise}
-            Loading...
-        {:then bill}
-            {bill.title}
-        {/await}
-    </h1>
-    <div class="flex flex-row gap-x-2 mt-4 max-w-[1000px] mx-auto">
-        {#await bill_promise}
-            <p class="text-gray-200">Loading...</p>
-        {:then bill}
-            {#each bill.data.bill.sponsors as sponsor}
-                <a class="font-regular px-2 py-1 text-xs rounded bg-white shadow" href="/sponsored-by/{sponsor.bioguideId}">
-                    {sponsor.fullName}
-                </a>
-            {/each}
-        {/await}
+<Header>
+    <a href="/" class="-mt-1 mb-6 px-4 text-"><span class="font-bold">Bill</span>board</a>
+    <div class="w-full text-left">
+        <h1 class="text-2xl text-white max-w-[1000px] mx-auto font-bold">
+            {#await bill_promise}
+                Loading...
+            {:then bill}
+                {bill.title}
+            {/await}
+        </h1>
+        <div class="flex flex-row gap-x-2 mt-4 max-w-[1000px] mx-auto">
+            {#await bill_promise}
+                <p class="text-gray-200">Loading...</p>
+            {:then bill}
+                {#each bill.data.bill.sponsors as sponsor}
+                    <a class="font-regular px-2 py-1 text-xs rounded bg-white text-gray-900 shadow" href="/sponsored-by/{sponsor.bioguideId}">
+                        {sponsor.fullName}
+                    </a>
+                {/each}
+            {/await}
+        </div>
     </div>
-</header>
+</Header>
 
 
 <div class="my-8 max-w-[1000px] mx-auto">

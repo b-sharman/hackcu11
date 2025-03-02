@@ -68,7 +68,7 @@ async function subscribe() {
 <Header>
     <a href="/" class="-mt-1 mb-6 px-4 text-"><span class="font-bold">Bill</span>board</a>
     <div class="w-full text-left">
-        <h1 class="text-2xl text-white max-w-[1000px] mx-auto font-bold">
+        <h1 class="max-w-[1000px] mx-auto text-2xl text-white text-pretty font-bold">
             {#await bill_promise}
                 Loading...
             {:then bill}

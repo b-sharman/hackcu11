@@ -54,6 +54,9 @@ let results_promise = $derived.by(async () => {
           <div class="w-full text-center">
             <p class="text-gray-700">Search results will appear here</p>
           </div>
+          <section class="mt-8">
+            <SankeyPlot />
+          </section>
         {:else}
           <div class="w-full text-center">
             <p class="text-gray-700">No results found</p>
@@ -62,8 +65,5 @@ let results_promise = $derived.by(async () => {
       {:catch error}
         <p class="m-4"><span class="text-red-500">Error:</span> {error.message}</p>
     {/await}
-    <section class="mt-8">
-      <SankeyPlot />
-    </section>
   </main>
 </div>

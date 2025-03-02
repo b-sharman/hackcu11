@@ -4,6 +4,11 @@ import requests
 import sqlite3
 from dotenv import load_dotenv
 import os
+import pickle
+import pandas as pd
+
+with open('model.pkl', 'rb') as f:
+    model = pickle.load(f)
 
 app = Flask(__name__)
 load_dotenv(".env.local")

@@ -11,8 +11,12 @@ async function expand() {
   const json = await (await fetch(
     `http://localhost:5000/summary?id=${result.id}`,
   )).json();
-  console.log(json);
-  summary = json['summary'];
+  if (json['exists']) {
+    // Remove the title if it's included in the summary
+    summary = json['summary'].replace(`<b>${result.title}</b>`, '');
+  } else {
+    summary = 'No summary is available for this bill.';
+  }
   expanded = !expanded;
 }
 </script>

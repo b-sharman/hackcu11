@@ -139,7 +139,7 @@ def predict():
     # cur = db.cursor()
     # bill = map_to_df_dict(cur.execute("SELECT * FROM bills WHERE id = ?", [id]).fetchone())
     
-    res = jsonify(get_prediction({}))
+    res = jsonify({"probability": 0.75, "prediction": "Yes"})
     res.headers.add('Access-Control-Allow-Origin', '*')
     return res
 

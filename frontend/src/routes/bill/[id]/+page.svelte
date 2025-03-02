@@ -10,7 +10,7 @@ let bill_promise = $derived.by(async () => {
 </script>
 
 
-<header class="bg-purple-200 py-6 px-2">
+<header class="bg-violet-200 py-6 px-2">
     <h2 class="text-2xl max-w-3xl mx-auto font-bold">
         {#await bill_promise}
         Loading...

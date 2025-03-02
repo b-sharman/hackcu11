@@ -21,8 +21,8 @@ async function expand() {
 }
 </script>
 
-<li>
-  <button class="size-full text-left p-4 hover:bg-gray-200" onclick={expand}>
+<li class="hover:bg-gray-200">
+  <button class="size-full text-left p-4" onclick={expand}>
 
     <div class="flex flex-row gap-8">
       <div class="basis-full">

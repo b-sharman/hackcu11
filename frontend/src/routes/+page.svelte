@@ -4,6 +4,7 @@ export const prerender = false;
 let searchText = $state('');
 
 let results_promise = $derived.by(async () => {
+  if (searchText === '') return [];
   const res = await fetch(
     `http://localhost:5000/search?q=${searchText}`,
   );

@@ -39,12 +39,14 @@ let bill_promise = $derived.by(async () => {
                 </div>
             </div>
         {:then bill}
-            <div class="p-4">
-                <h3 class="mb-2 text-lg font-bold">Summary</h3>
-                <div class="space-y-2">
-                    {@html bill.summary}
+            {#if bill.summary.exists}
+                <div class="p-4">
+                    <h3 class="mb-2 text-lg font-bold">Summary</h3>
+                    <div class="space-y-2">
+                        {@html bill.summary.summary}
+                    </div>
                 </div>
-            </div>
+            {/if}
         {/await}
         <div class="p-4">
             <h3 class="mb-2 text-lg font-bold">Actions</h3>
@@ -52,7 +54,7 @@ let bill_promise = $derived.by(async () => {
                 {#await bill_promise}
                     Loading...
                 {:then bill}
-                    {#each bill.actions.actions.reverse() as action}
+                    {#each bill.actions as action}
                         <li>{action.actionDate} — {action.text}</li>
                     {/each}
                 {/await}

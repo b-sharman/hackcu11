@@ -94,7 +94,7 @@ def predict():
         prediction = 'No'
     else:
         prediction = 'Yes'
-    return jsonify({'prediction': prediction})
+    return jsonify({'prediction': prediction}, {'probability': probability[1]})
 
 
 @app.route("/bill")

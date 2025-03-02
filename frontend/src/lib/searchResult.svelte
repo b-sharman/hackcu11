@@ -2,6 +2,17 @@
 import { slide } from "svelte/transition";
   import ExternalUrl from "./externalUrl.svelte";
 
+const READABLE_STRS = {
+    'HCONRES': 'H.Con.Res.',
+    'HJRES': 'H.J.Res.',
+    'HR': 'H.R.',
+    'HRES': 'H.Res.',
+    'S': 'S.',
+    'SCONRES': 'S.Con.Res.',
+    'SJRES': 'S.J.Res.',
+    'SRES': 'S.Res.',
+}
+
 let { result, searchText } = $props();
 
 let expanded: boolean = $state(false);
@@ -22,6 +33,7 @@ async function expand() {
 
     <div class="flex flex-row gap-8">
       <div class="basis-full">
+        <p class="mb-1 text-xs text-gray-600">{READABLE_STRS[result.type]}{result.number}</p>
         <p class="text-lg font-bold">
           {@html result.title.replaceAll(
             new RegExp(searchText, 'gi'),

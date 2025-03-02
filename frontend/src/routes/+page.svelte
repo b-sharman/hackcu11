@@ -1,14 +1,26 @@
 <script lang='ts'>
-import type { PageProps } from './$types';
-import Fuse from 'fuse.js';
-
-let { data }: PageProps = $props();
-
-const fuse = new Fuse(data.titles, {});
+export const prerender = false;
 
 let searchText = $state('');
 
-let results = $derived(fuse.search(searchText));
+let results_promise = $derived.by(async () => {
+  const res = await fetch(
+    `http://localhost:5000/search?q=${searchText}`,
+    {
+      mode: 'no-cors'
+    }
+  );
+  // return await res.json();
+  let str = await res.text();
+  str = str.replace(/\\./i, '');
+  try {
+    return JSON.parse(str);
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+$inspect(searchText, results_promise);
 
 </script>
 
@@ -29,15 +41,21 @@ let results = $derived(fuse.search(searchText));
   </div>
 
   <div>
-    {#if results.length > 0}
-      {#each results.slice(0, 5) as result}
-        <p>{result.item}</p>
-      {/each}
-    {:else if searchText === ""}
-      <p>Search results will appear here</p>
-    {:else}
-      <p>No results found</p>
-    {/if}
+    {#await results_promise}
+      <p>Loading...</p>
+      {:then results}
+        {#if results.length > 0}
+          {#each results.slice(0, 5) as result}
+            <p>{result.item}</p>
+          {/each}
+        {:else if searchText === ""}
+          <p>Search results will appear here</p>
+        {:else}
+          <p>No results found</p>
+        {/if}
+      {:catch error}
+        <p><span class="text-red-500">Error:</span> {error.message}</p>
+    {/await}
   </div>
 
 </main>

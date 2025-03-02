@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 @theme {
-    --font-sans: 'Roboto', sans-serif;
+    --font-sans: 'Cantarell', sans-serif;
     --color-accent-bg: rgb(74, 68, 190);
     --color-accent-fg: white;
 }

@@ -23,17 +23,17 @@ function getStatus(bill) {
 }
 </script>
 
-<header class="bg-purple-200 py-6 px-2">
-    <h1 class="text-2xl max-w-3xl mx-auto font-bold">
+<header class="bg-linear-to-br from-indigo-800 to-purple-900 py-6 px-2">
+    <h1 class="text-2xl text-white max-w-[1000px] mx-auto font-bold">
         {#await bill_promise}
             Loading...
         {:then bill}
             {bill.title}
         {/await}
     </h1>
-    <div class="flex flex-row gap-x-2 mt-4 max-w-3xl mx-auto">
+    <div class="flex flex-row gap-x-2 mt-4 max-w-[1000px] mx-auto">
         {#await bill_promise}
-            Loading...
+            <p class="text-gray-200">Loading...</p>
         {:then bill}
             {#each bill.data.bill.sponsors as sponsor}
                 <a class="font-regular px-2 py-1 text-xs rounded bg-white shadow" href="/sponsored-by/{sponsor.bioguideId}">
@@ -45,7 +45,7 @@ function getStatus(bill) {
 </header>
 
 
-<div class="my-8 max-w-3xl mx-auto">
+<div class="my-8 max-w-[1000px] mx-auto">
     <main class="shadow rounded-xl border border-gray-300 divide-y divide-gray-200">
         <div class="divide-x divide-gray-200 flex">
             <div class="p-4 flex-1">

@@ -102,8 +102,11 @@ def map_to_df_dict(bill):
     }
 
 def get_prediction(bill):
-    prediction = model.predict([bill])
-    probability = model.predict_proba([bill])
+    df = pd.DataFrame.from_dict(bill)
+    df_encoded = pd.get_dummies(df, columns=['type', 'originChamber'])
+    df = df_encoded
+    prediction = model.predict(df)
+    probability = model.predict_proba(df)
 
     if prediction[0] == 0:
         prediction = 'No'

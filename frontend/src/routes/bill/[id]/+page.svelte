@@ -36,7 +36,9 @@ function getStatus(bill) {
             Loading...
         {:then bill}
             {#each bill.data.bill.sponsors as sponsor}
-                <span class="font-regular px-2 py-1 text-xs rounded bg-white shadow">{sponsor.fullName}</span>
+                <a class="font-regular px-2 py-1 text-xs rounded bg-white shadow" href="/sponsored-by/{sponsor.bioguideId}">
+                    {sponsor.fullName}
+                </a>
             {/each}
         {/await}
     </div>

@@ -1,4 +1,6 @@
 <script lang='ts'>
+import SearchResult from '$lib/searchResult.svelte';
+
 export const prerender = false;
 
 let searchText = $state('');
@@ -10,8 +12,6 @@ let results_promise = $derived.by(async () => {
   );
   return await res.json();
 });
-
-$inspect(searchText, results_promise);
 
 </script>
 
@@ -31,22 +31,23 @@ $inspect(searchText, results_promise);
     <button class="h-full bg-accent-bg text-accent-fg px-4 py-1.5 rounded cursor-pointer">Search</button>
   </div>
 
-  <div>
+  <div class="rounded-xl border border-gray-200">
     {#await results_promise}
-      <p>Loading...</p>
+      <p class="m-4">Loading...</p>
       {:then results}
         {#if results.length > 0}
-          {#each results as result}
-            {console.log(result)}
-            <p>{@html result.title.replace(searchText, `<strong>${searchText}</strong>`)}</p>
-          {/each}
+          <ul class="divide-y divide-gray-200">
+            {#each results as result}
+              <SearchResult {result} {searchText} />
+            {/each}
+          </ul>
         {:else if searchText === ""}
-          <p>Search results will appear here</p>
+          <p class="m-4">Search results will appear here</p>
         {:else}
-          <p>No results found</p>
+          <p class="m-4">No results found</p>
         {/if}
       {:catch error}
-        <p><span class="text-red-500">Error:</span> {error.message}</p>
+        <p class="m-4"><span class="text-red-500">Error:</span> {error.message}</p>
     {/await}
   </div>
 

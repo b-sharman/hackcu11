@@ -1,9 +1,16 @@
 <script lang='ts'>
+import { beforeNavigate, pushState } from '$app/navigation';
+import { page } from '$app/state';
 import SearchResult from '$lib/searchResult.svelte';
 import { results } from '$lib/searchResultState.svelte';
+
+beforeNavigate(() => {
+  pushState('', { searchText });
+});
+
 export const prerender = false;
 
-let searchText = $state('');
+let searchText = $state(page.state.searchText);
 
 let results_promise = $derived.by(async () => {
   if (searchText === '') return [];

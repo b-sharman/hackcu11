@@ -135,7 +135,7 @@ function getStatus(bill) {
                     Loading...
                 {:then bill}
                     {#each bill.actions as action}
-                        <li>{action.actionDate} — {action.text}</li>
+                        <li>{action.actionDate} — {action.text} [{action.actionCode}]</li>
                     {/each}
                 {/await}
             </ul>

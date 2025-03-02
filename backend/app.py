@@ -1,5 +1,4 @@
-from flask import Flask
-from flask import jsonify, request
+from flask import Flask, jsonify, request
 import requests
 import sqlite3
 from dotenv import load_dotenv
@@ -48,7 +47,7 @@ def get_summary(bill):
 
 def get_actions(bill):
     actions = requests.get(f"https://api.congress.gov/v3/bill/{bill['congress']}/{bill['type'].lower()}/{bill['number']}/actions?api_key={os.getenv('VITE_API_KEY')}&format=json").json()
-    return [action for action in actions["actions"] if not ('actionCode' in action and action['actionCode'] == "Intro-H")]
+    return [action for action in actions["actions"]]
 
 def map_to_dict(bill):
     return {
@@ -186,3 +185,17 @@ def member():
     res = jsonify({"member": member_data, "bills": bills})
     res.headers.add('Access-Control-Allow-Origin', '*')
     return res
+
+@app.route("/subscribe", methods=['POST'])
+def subscribe():
+    email = request.form['email']
+    bill_id = request.form['bill_id']
+
+    db = sqlite3.connect('database.db')
+    cur = db.cursor()
+    cur.execute("INSERT INTO subscriptions(bill_id, email) VALUES (?,?)", [bill_id, email])
+    db.commit()
+
+    res = jsonify({'statusCode': 201})
+    res.headers.add('Access-Control-Allow-Origin', '*')
+    return res, 201

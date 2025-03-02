@@ -30,12 +30,12 @@ let results_promise = $derived.by(async () => {
     />
   </div>
 
-  <div class="rounded-xl border border-gray-200">
+  <div class="rounded-xl border border-gray-200 overflow-hidden">
     {#await results_promise}
       <p class="m-4">Loading...</p>
       {:then results}
         {#if results.length > 0}
-          <ul class="divide-y divide-gray-200 first:*:rounded-t-xl last:*:rounded-b-xl">
+          <ul class="divide-y divide-gray-200">
             {#each results as result}
               <SearchResult {result} {searchText} />
             {/each}

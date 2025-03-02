@@ -122,35 +122,6 @@ def summary():
     res.headers.add('Access-Control-Allow-Origin', '*')
     return res, status
 
-def map_to_df_dict(bill):
-    update = pd.to_datetime(bill[4].split('T')[0])
-    introduced = pd.to_datetime(bill[3])
-
-    duration = (update - introduced).days
-
-    return {
-        "number": bill[1],
-        "congress": bill[7],
-        "duration": duration,
-        "type": bill[6],
-        "originChamber": bill[5]
-    }
-
-# def get_prediction(bill):
-#     df = pd.DataFrame.from_dict(bill)
-#     df_encoded = pd.get_dummies(df, columns=['type', 'originChamber'])
-#     df = df_encoded
-
-#     prediction = model.predict(df)
-#     probability = model.predict_proba(df)
-
-#     if prediction[0] == 0:
-#         prediction = 'No'
-#     else:
-#         prediction = 'Yes'
-
-#     return {'prediction': prediction, 'probability': probability[0][1]}
-
 
 @app.route("/bill")
 def bill():

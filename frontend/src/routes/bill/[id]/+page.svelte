@@ -37,10 +37,16 @@ async function subscribe() {
 
     try {
         const res = await fetch(
-            `http://localhost:5000/subscribe?email=${email}&bill_id=${data.bill_id}`,
+            `http://localhost:5000/subscribe`,
             {
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
                 method: 'POST',
-                body: JSON.stringify({ email, bill_id: data.bill_id }),
+                body: new URLSearchParams({
+                    'email': email,
+                    'bill_id': data.bill_id,
+                }),
             }
         );
 
@@ -190,7 +196,7 @@ async function subscribe() {
             <p class="mt-2">Loading...</p>
         </div>
         {:then bill}
-            {#if bill.related}
+            {#if bill.related.length}
                 <div class="p-4">
                     <h3 class="mb-2 text-lg font-bold">Related Bills</h3>
                     <ul class="list-disc list-inside mt-2">

@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import request
+from flask import jsonify, request
 import sqlite3
 
 app = Flask(__name__)
@@ -36,5 +36,6 @@ def search():
     db = sqlite3.connect('database.db')
     cur = db.cursor()
     bills = [map_to_dict(bill)for bill in cur.execute(r"SELECT * FROM bills WHERE title LIKE ? ORDER BY congress DESC LIMIT 10", [f"%{query}%"]).fetchall()]
-    return [bill | {'url': get_url(bill)} for bill in bills]
-    
+    res = jsonify([bill | {'url': get_url(bill)} for bill in bills])
+    res.headers.add('Access-Control-Allow-Origin', '*')
+    return res

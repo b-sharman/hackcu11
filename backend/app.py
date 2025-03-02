@@ -6,7 +6,9 @@ from dotenv import load_dotenv
 import os
 import pickle
 import pandas as pd
-import datetime
+import re
+
+SUMMARY_TITLE = re.compile('<p><(b|strong)>.*</(b|strong)></p>', re.I)
 
 filename = './model/model.pkl'
 with open(filename, 'rb') as f:
@@ -37,7 +39,10 @@ def get_subjects(bill):
 def get_summary(bill):
     response = requests.get(f"https://api.congress.gov/v3/bill/{bill['congress']}/{bill['type'].lower()}/{bill['number']}/summaries?api_key={os.getenv('VITE_API_KEY')}&format=json&limit=1").json()
     try:
-        return {'exists': True, 'summary': response['summaries'][0]['text']}
+        return {
+            'exists': True,
+            'summary': SUMMARY_TITLE.sub('', response['summaries'][0]['text'])
+        }
     except:
         return {'exists': False}
 

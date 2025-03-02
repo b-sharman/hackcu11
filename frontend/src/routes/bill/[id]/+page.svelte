@@ -24,13 +24,13 @@ function getStatus(bill) {
 </script>
 
 <header class="bg-purple-200 py-6 px-2">
-    <h2 class="text-2xl max-w-3xl mx-auto font-bold">
+    <h1 class="text-2xl max-w-3xl mx-auto font-bold">
         {#await bill_promise}
             Loading...
         {:then bill}
             {bill.title}
         {/await}
-    </h2>
+    </h1>
     <div class="flex flex-row gap-x-2 mt-4 max-w-3xl mx-auto">
         {#await bill_promise}
             Loading...
@@ -45,7 +45,7 @@ function getStatus(bill) {
 </header>
 
 
-<div class="mt-8 max-w-3xl mx-auto">
+<div class="my-8 max-w-3xl mx-auto">
     <main class="shadow rounded-xl border border-gray-300 divide-y divide-gray-200">
         <div class="divide-x divide-gray-200 flex">
             <div class="p-4 flex-1">

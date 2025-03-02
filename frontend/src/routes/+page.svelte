@@ -15,7 +15,7 @@ let results_promise = $derived.by(async () => {
 
 </script>
 
-<header class="p-8 bg-violet-200 *:text-center">
+<header class="p-8 bg-purple-200 *:text-center">
   <h1 class="text-2xl m-4"><span class="font-bold">Bill</span>board</h1>
   <p class="text-gray-600">Track pending and historical bills from from the U.S. Congress</p>
 </header>

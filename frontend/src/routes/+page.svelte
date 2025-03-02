@@ -20,7 +20,7 @@ let results_promise = $derived.by(async () => {
   <p class="text-gray-600">Visualize public data from the U.S. Congress</p>
 </header>
 
-<main class="max-w-[1000px] mx-auto">
+<main class="max-w-[1000px] mx-auto pb-4">
   <div class="my-16 flex justify-center gap-4">
     <input
       bind:value={searchText}

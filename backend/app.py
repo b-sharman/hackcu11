@@ -36,10 +36,15 @@ def get_subjects(bill):
 
 def get_summary(bill):
     response = requests.get(f"https://api.congress.gov/v3/bill/{bill['congress']}/{bill['type'].lower()}/{bill['number']}/summaries?api_key={os.getenv('VITE_API_KEY')}&format=json&limit=1").json()
-    return response['summaries'][0]['text']
+    try:
+        return {'exists': True, 'summary': response['summaries'][0]['text']}
+    except:
+        return {'exists': False}
 
 def get_actions(bill):
-    return requests.get(f"https://api.congress.gov/v3/bill/{bill['congress']}/{bill['type'].lower()}/{bill['number']}/actions?api_key={os.getenv('VITE_API_KEY')}&format=json").json()
+    actions = requests.get(f"https://api.congress.gov/v3/bill/{bill['congress']}/{bill['type'].lower()}/{bill['number']}/actions?api_key={os.getenv('VITE_API_KEY')}&format=json").json()
+    print([action for action in actions["actions"] if not ('actionCode' in action and action['actionCode'] == "Intro-H")])
+    return [action for action in actions["actions"] if not ('actionCode' in action and action['actionCode'] == "Intro-H")]
 
 def map_to_dict(bill):
     return {
@@ -72,14 +77,12 @@ def summary():
     cur = db.cursor()
 
     bill = map_to_dict(cur.execute("SELECT * FROM bills WHERE id = ?", [id]).fetchone())
-    try:
-        res = jsonify({'exists': True, 'summary': get_summary(bill)})
-        res.headers.add('Access-Control-Allow-Origin', '*')
-        return res, 200
-    except:
-        res = jsonify({'exists': False})
-        res.headers.add('Access-Control-Allow-Origin', '*')
-        return res, 404
+    
+    summary = get_summary(bill)
+    status = 200 if summary['exists'] else 404
+    res = jsonify(summary)
+    res.headers.add('Access-Control-Allow-Origin', '*')
+    return res, status
 
 @app.route('/predict')
 def predict():

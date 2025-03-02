@@ -136,7 +136,7 @@ async function subscribe() {
                     <div class="p-4 flex-1 flex flex-col justify-between">
                         <h3 class="font-bold text-lg mb-2">Probability</h3>
                         <p>
-                            This bill has a <span class="bg-yellow-100 px-1 py-0.5 rounded">{(bill.prediction.probability * 100).toFixed(0)}%</span> chance of being passed.
+                            This bill has a <span class="bg-yellow-100 px-1 py-0.5 rounded">{bill.prediction.probability < 1 ? '<1' : (bill.prediction.probability * 100).toFixed(0)}%</span> chance of being passed.
                         </p>
                     </div>
                 {/if}

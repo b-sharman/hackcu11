@@ -84,19 +84,20 @@ def predict():
     prediction = model.predict([bill])
     print(prediction)
 
-# @app.route("/bill")
-# def bill():
-#     id = request.args.get('id')
-#     db = sqlite3.connect('database.db')
-#     cur = db.cursor()
-#     bill = map_to_dict(cur.execute("SELECT * FROM bills WHERE id = ?", [id]).fetchone())
+@app.route("/bill")
+def bill():
+    id = request.args.get('id')
+    db = sqlite3.connect('database.db')
+    cur = db.cursor()
+    bill = map_to_dict(cur.execute("SELECT * FROM bills WHERE id = ?", [id]).fetchone())
 
-#     bill_data = requests.get(f"https://api.congress.gov/v3/bill/{bill['congress']}/{bill['type'].lower()}/{bill['number']}?api_key={os.getenv('VITE_API_KEY')}&format=json").json()
+    bill_data = requests.get(f"https://api.congress.gov/v3/bill/{bill['congress']}/{bill['type'].lower()}/{bill['number']}?api_key={os.getenv('VITE_API_KEY')}&format=json").json()
 
-#     res = jsonify(bill | {
-#         'subjects': get_subjects(bill),
-#         'summary': get_summary(bill),
-#     })
-#     res.headers.add('Access-Control-Allow-Origin', '*')
-#     return res
+    res = jsonify(bill | {
+        'subjects': get_subjects(bill),
+        'summary': get_summary(bill),
+        'data': bill_data,
+    })
+    res.headers.add('Access-Control-Allow-Origin', '*')
+    return res
 

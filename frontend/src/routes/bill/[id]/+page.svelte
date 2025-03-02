@@ -16,6 +16,7 @@ const bill_promise = $derived.by(async () => {
     return await res.json();
 });
 
+
 function getStatus(bill) {
     if (bill == undefined) {
         return undefined;

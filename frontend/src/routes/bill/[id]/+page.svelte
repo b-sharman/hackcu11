@@ -163,25 +163,26 @@ async function subscribe() {
         {/await}
         <div class="p-4">
             <h3 class="mb-2 text-lg font-bold">Actions</h3>
-            <ul class="list-disc list-inside">
-                <Timeline>
-                    {#await bill_promise}
-                        Loading...
-                    {:then bill}
+            {#await bill_promise}
+                Loading...
+                {:then bill}
+                <!-- To the best of my knowledge, the library doesn't allow removing the left side, but with a bit of Tailwind magic, we can infiltrate the component. -->
+                <ul class="list-disc list-inside **:[&.opposite-block]:hidden">
+                    <Timeline position="right">
                         {#each bill.actions.reverse() as action}
-                        <TimelineItem>
-                            <TimelineSeparator>
-                                <TimelineDot />
-                                <TimelineConnector />
-                            </TimelineSeparator>
-                            <TimelineContent>
-                                <p>{action.actionDate} — {action.text} [{action.actionCode}]</p>
-                            </TimelineContent>
-                        </TimelineItem>
+                            <TimelineItem>
+                                <TimelineSeparator>
+                                    <TimelineDot />
+                                    <TimelineConnector />
+                                </TimelineSeparator>
+                                <TimelineContent>
+                                    <p>{action.actionDate} — {action.text} [{action.actionCode}]</p>
+                                </TimelineContent>
+                            </TimelineItem>
                         {/each}
-                    {/await}
-                </Timeline>
-            </ul>
+                    </Timeline>
+                </ul>
+            {/await}
         </div>
         <div class="p-4">
             <h3 class="mb-2 text-lg font-bold">Track Bill</h3>

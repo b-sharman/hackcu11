@@ -61,9 +61,14 @@ def summary():
     cur = db.cursor()
 
     bill = map_to_dict(cur.execute("SELECT * FROM bills WHERE id = ?", [id]).fetchone())
-    res = jsonify({'summary': get_summary(bill)})
-    res.headers.add('Access-Control-Allow-Origin', '*')
-    return res
+    try:
+        res = jsonify({'exists': True, 'summary': get_summary(bill)})
+        res.headers.add('Access-Control-Allow-Origin', '*')
+        return res, 200
+    except:
+        res = jsonify({'exists': False})
+        res.headers.add('Access-Control-Allow-Origin', '*')
+        return res, 404
 
 # @app.route("/bill")
 # def bill():
@@ -74,9 +79,9 @@ def summary():
 
 #     bill_data = requests.get(f"https://api.congress.gov/v3/bill/{bill['congress']}/{bill['type'].lower()}/{bill['number']}?api_key={os.getenv('VITE_API_KEY')}&format=json").json()
 
-
 #     res = jsonify(bill | {
-#         'summary': get_summary(bill)
+#         'subjects': get_subjects(bill),
+#         'summary': get_summary(bill),
 #     })
 #     res.headers.add('Access-Control-Allow-Origin', '*')
 #     return res

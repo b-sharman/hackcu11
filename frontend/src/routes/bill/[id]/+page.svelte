@@ -21,24 +21,6 @@
         return jsonData;
     });
     
-    const prediction_promise = $derived.by(async () => {
-        if (bill == undefined) {
-            return;
-        }
-
-        const introduced = new Date(bill['date_introduced']);
-        const updated = new Date(bill['date_updated']);
-        const diffTime = Math.abs(introduced - updated);
-        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-
-        const res = await fetch(
-            `http://localhost:5000/predict?number=${bill['number']}&congress=${bill['congress']}&duration=${diffDays}&type=${bill['type']}&originChamber=${bill['origin']}`,
-        );
-        let jsonData = (await res.json());
-        prediction = jsonData;
-        return jsonData;
-    })
-    
     function getStatus(bill) {
         if (bill == undefined) {
             return undefined;
@@ -158,19 +140,19 @@
                         </div>
                     </div>
                 </div>
-                {#await prediction_promise}
+                {#await bill_promise}
                     <div class="p-4 flex-1 flex flex-col justify-between">
                         <h3 class="font-bold text-lg mb-2">Probability</h3>
                         <p>
                             Loading...
                         </p>
                     </div>
-                {:then prediction}
+                {:then bill}
                     {#if getStatus(bill) == 'pending'}
                         <div class="p-4 flex-1 flex flex-col justify-between">
                             <h3 class="font-bold text-lg mb-2">Probability</h3>
                             <p>
-                                This bill has a <span class="bg-yellow-100 px-1 py-0.5 rounded">{prediction.prediction < 1 ? '< 1' : (prediction.probability * 100).toFixed(0)}%</span> chance of being passed.
+                                This bill has a <span class="bg-yellow-100 px-1 py-0.5 rounded">{bill.prediction.prediction < 1 ? '< 1' : (bill.prediction.probability * 100).toFixed(0)}%</span> chance of being passed.
                             </p>
                         </div>
                     {/if}

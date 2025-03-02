@@ -94,21 +94,13 @@ def map_to_df_dict(bill):
 
     duration = (update - introduced).days
 
-    return [
-        float(bill[1]),
-        float(bill[7]),
-        float(duration),
-        float(bill[6] == 'HCONRES'),
-        float(bill[6] == 'HJRES'),
-        float(bill[6] == 'HR'),
-        float(bill[6] == 'HRES'),
-        float(bill[6] == 'S'),
-        float(bill[6] == 'SCONRES'),
-        float(bill[6] == 'SJRES'),
-        float(bill[6] == 'SRES'),
-        float(bill[5] == 'House'),
-        float(bill[5] == 'Senate'),
-    ]
+    return {
+        "number": bill[1],
+        "congress": bill[7],
+        "duration": duration,
+        "type": bill[6],
+        "originChamber": bill[5]
+    }
 
 def get_prediction(bill):
     prediction = model.predict([bill])
@@ -141,12 +133,12 @@ def bill():
     bill_tuple = cur.execute("SELECT * FROM bills WHERE id = ?", [id]).fetchone()
     bill = map_to_dict(bill_tuple)
     bill_df = map_to_df_dict(bill_tuple)
-    prediction = get_prediction(bill_df);
+    # prediction = get_prediction(bill_df);
 
     bill_data = requests.get(f"https://api.congress.gov/v3/bill/{bill['congress']}/{bill['type'].lower()}/{bill['number']}?api_key={os.getenv('VITE_API_KEY')}&format=json").json()
 
     res = jsonify(bill | {
-        'prediction': prediction,
+        'prediction': {'prediction': 'No', 'probability': 0},
         'subjects': get_subjects(bill),
         'summary': get_summary(bill),
         'actions': get_actions(bill),

@@ -6,18 +6,8 @@ let searchText = $state('');
 let results_promise = $derived.by(async () => {
   const res = await fetch(
     `http://localhost:5000/search?q=${searchText}`,
-    {
-      mode: 'no-cors'
-    }
   );
-  // return await res.json();
-  let str = await res.text();
-  str = str.replace(/\\./i, '');
-  try {
-    return JSON.parse(str);
-  } catch (e) {
-    console.log(e);
-  }
+  return await res.json();
 });
 
 $inspect(searchText, results_promise);
@@ -46,7 +36,8 @@ $inspect(searchText, results_promise);
       {:then results}
         {#if results.length > 0}
           {#each results.slice(0, 5) as result}
-            <p>{result.item}</p>
+            {console.log(result)}
+            <p>{result.title}</p>
           {/each}
         {:else if searchText === ""}
           <p>Search results will appear here</p>

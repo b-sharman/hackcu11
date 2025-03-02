@@ -54,9 +54,6 @@ let results_promise = $derived.by(async () => {
             {/each}
           </ul>
         {:else if searchText === ""}
-          <div class="w-full text-center">
-            <p class="text-gray-700">Search results will appear here</p>
-          </div>
           <section class="mt-8">
             <SankeyPlot/>
           </section>

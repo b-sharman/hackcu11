@@ -82,7 +82,11 @@ def predict():
     rand = random.randint(0, len(df))
     bill = df.iloc[rand]
     prediction = model.predict([bill])
-    print(prediction)
+    if prediction[0] == 0:
+        prediction = 'No'
+    else:
+        prediction = 'Yes'
+    return jsonify({'prediction': prediction})
 
 @app.route("/bill")
 def bill():

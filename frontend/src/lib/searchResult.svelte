@@ -14,7 +14,9 @@ async function expand() {
   )).json();
   if (json['exists']) {
     // Remove the title if it's included in the summary
-    summary = json['summary'].replace(`<b>${result.title}</b>`, '');
+    summary = json['summary']
+      .replace(new RegExp(`<b>${result.title}</b>`, 'i'), '')
+      .replace(new RegExp(`<strong>${result.title}</strong>`, 'i'), '');
   } else {
     summary = 'No summary is available for this bill.';
   }

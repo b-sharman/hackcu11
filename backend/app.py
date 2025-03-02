@@ -90,6 +90,7 @@ def predict():
     rand = random.randint(0, len(df))
     bill = df.iloc[[rand]]
     prediction = model.predict(bill)
+    probability = model.predict_proba(bill)
     if prediction[0] == 0:
         prediction = 'No'
     else:

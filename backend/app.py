@@ -49,6 +49,17 @@ def get_actions(bill):
     actions = requests.get(f"https://api.congress.gov/v3/bill/{bill['congress']}/{bill['type'].lower()}/{bill['number']}/actions?api_key={os.getenv('VITE_API_KEY')}&format=json").json()
     return [action for action in actions["actions"]]
 
+def get_related(bill):   
+    id = request.args.get('id')
+    db = sqlite3.connect('database.db')
+    cur = db.cursor()
+
+    related = requests.get(f"https://api.congress.gov/v3/bill/{bill['congress']}/{bill['type'].lower()}/{bill['number']}/relatedbills?api_key={os.getenv('VITE_API_KEY')}&format=json").json()['relatedBills']
+    bills = [cur.execute("SELECT * FROM bills WHERE congress = ? AND number = ? AND type = ?", [rel['congress'], rel['number'], rel['type']]).fetchone() for rel in related]
+
+    return [{'id': bill['id'], 'title': bill['title'],'url': f"/bill/{bill['id']}"} for bill in [map_to_dict(b) for b in bills]]
+
+
 def map_to_dict(bill):
     return {
         'id': bill[0],
@@ -146,6 +157,7 @@ def bill():
         'actions': get_actions(bill),
         'url': get_url(bill),
         'data': bill_data,
+        'related': get_related(bill),
     })
     res.headers.add('Access-Control-Allow-Origin', '*')
     return res

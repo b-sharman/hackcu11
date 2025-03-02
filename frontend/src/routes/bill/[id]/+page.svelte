@@ -175,7 +175,7 @@ async function subscribe() {
                                 <TimelineConnector />
                             </TimelineSeparator>
                             <TimelineContent>
-                                <p>{action.actionDate} — {action.text} [{action.actionCode}]</p>
+                                <p>{action.actionDate} — {action.text}</p>
                             </TimelineContent>
                         </TimelineItem>
                         {/each}
@@ -183,6 +183,23 @@ async function subscribe() {
                 </Timeline>
             </ul>
         </div>
+        {#await bill_promise}
+        <div class="p-4">
+            <h3 class="mb-2 text-lg font-bold">Related Bills</h3>
+            <p class="mt-2">Loading...</p>
+        </div>
+        {:then bill}
+            {#if bill.related}
+                <div class="p-4">
+                    <h3 class="mb-2 text-lg font-bold">Related Bills</h3>
+                    <ul class="list-disc list-inside mt-2">
+                        {#each bill.related as related}
+                            <li><a class="text-blue-600 underline text-sm" href={related.url}>{related.title}</a></li>
+                        {/each}
+                    </ul>
+                </div>
+            {/if}
+        {/await}
         <div class="p-4">
             <h3 class="mb-2 text-lg font-bold">Track Bill</h3>
             <ul class="space-y-2">

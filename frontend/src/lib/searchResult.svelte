@@ -12,7 +12,8 @@ async function expand() {
     `http://localhost:5000/summary?id=${result.id}`,
   )).json();
   if (json['exists']) {
-    summary = json['summary'];
+    // Remove the title if it's included in the summary
+    summary = json['summary'].replace(`<b>${result.title}</b>`, '');
   } else {
     summary = 'No summary is available for this bill.';
   }

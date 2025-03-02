@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 import os
 import pickle
 import pandas as pd
-import random
+import datetime
 
 filename = './model/model.pkl'
 with open(filename, 'rb') as f:
@@ -57,6 +57,30 @@ def map_to_dict(bill):
         'congress': bill[7],
     }
 
+def map_to_df_dict(bill):
+    update = pd.to_datetime(bill[4].split('T')[0])
+    introduced = pd.to_datetime(bill[3])
+
+    duration = (update - introduced).days
+
+    print(bill[1])
+
+    return [
+        float(bill[1]),
+        float(bill[7]),
+        float(duration),
+        float(bill[6] == 'HCONRES'),
+        float(bill[6] == 'HJRES'),
+        float(bill[6] == 'HR'),
+        float(bill[6] == 'HRES'),
+        float(bill[6] == 'S'),
+        float(bill[6] == 'SCONRES'),
+        float(bill[6] == 'SJRES'),
+        float(bill[6] == 'SRES'),
+        float(bill[5] == 'House'),
+        float(bill[5] == 'Senate'),
+    ]
+
 @app.route("/search")
 def search():
     query = request.args.get('q')
@@ -83,18 +107,27 @@ def summary():
     res.headers.add('Access-Control-Allow-Origin', '*')
     return res, status
 
-@app.route('/predict')
-def predict():
-    df = pd.read_csv('newest_bills.csv')
-    rand = random.randint(0, len(df))
-    bill = df.iloc[[rand]]
-    prediction = model.predict(bill)
-    probability = model.predict_proba(bill)
+def get_prediction(bill):
+    prediction = model.predict([bill])
+    probability = model.predict_proba([bill])
+
     if prediction[0] == 0:
         prediction = 'No'
     else:
         prediction = 'Yes'
-    return jsonify({'prediction': prediction}, {'probability': probability[1]})
+
+    return {'prediction': prediction, 'probability': probability[0][1]}
+
+@app.route('/predict')
+def predict():
+    id = request.args.get('id')
+    db = sqlite3.connect('database.db')
+    cur = db.cursor()
+    bill = map_to_df_dict(cur.execute("SELECT * FROM bills WHERE id = ?", [id]).fetchone())
+    
+    res = jsonify(get_prediction(bill))
+    res.headers.add('Access-Control-Allow-Origin', '*')
+    return res
 
 
 @app.route("/bill")
@@ -102,11 +135,15 @@ def bill():
     id = request.args.get('id')
     db = sqlite3.connect('database.db')
     cur = db.cursor()
-    bill = map_to_dict(cur.execute("SELECT * FROM bills WHERE id = ?", [id]).fetchone())
+    bill_tuple = cur.execute("SELECT * FROM bills WHERE id = ?", [id]).fetchone()
+    bill = map_to_dict(bill_tuple)
+    bill_df = map_to_df_dict(bill_tuple)
+    prediction = get_prediction(bill_df);
 
     bill_data = requests.get(f"https://api.congress.gov/v3/bill/{bill['congress']}/{bill['type'].lower()}/{bill['number']}?api_key={os.getenv('VITE_API_KEY')}&format=json").json()
 
     res = jsonify(bill | {
+        'prediction': prediction,
         'subjects': get_subjects(bill),
         'summary': get_summary(bill),
         'actions': get_actions(bill),

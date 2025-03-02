@@ -8,7 +8,7 @@ import pickle
 import pandas as pd
 import re
 
-SUMMARY_TITLE = re.compile('<p><(b|strong)>.*</(b|strong)></p>', re.I)
+SUMMARY_TITLE = re.compile('<(b|strong)>.*</(b|strong)>', re.I)
 
 filename = './model/model.pkl'
 with open(filename, 'rb') as f:

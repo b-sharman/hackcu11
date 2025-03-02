@@ -128,12 +128,18 @@ def get_prediction(bill):
 
 @app.route('/predict')
 def predict():
-    id = request.args.get('id')
-    db = sqlite3.connect('database.db')
-    cur = db.cursor()
-    bill = map_to_df_dict(cur.execute("SELECT * FROM bills WHERE id = ?", [id]).fetchone())
+    number = request.args.get('number')
+    congress = request.args.get('congress')
+    duration = request.args.get('duration')
+    type = request.args.get('type')
+    originChamber = request.args.get('originChamber')
+
+    # id = request.args.get('id')
+    # db = sqlite3.connect('database.db')
+    # cur = db.cursor()
+    # bill = map_to_df_dict(cur.execute("SELECT * FROM bills WHERE id = ?", [id]).fetchone())
     
-    res = jsonify(get_prediction(bill))
+    res = jsonify(get_prediction({}))
     res.headers.add('Access-Control-Allow-Origin', '*')
     return res
 

@@ -1,6 +1,7 @@
 <script>
 import ExternalUrl from '$lib/externalUrl.svelte';
 import { results } from '$lib/searchResultState.svelte.js';
+import { Timeline, TimelineItem, TimelineSeparator, TimelineDot, TimelineConnector, TimelineContent } from 'svelte-vertical-timeline';
 
 let { data } = $props();
 
@@ -163,20 +164,30 @@ async function subscribe() {
         <div class="p-4">
             <h3 class="mb-2 text-lg font-bold">Actions</h3>
             <ul class="list-disc list-inside">
-                {#await bill_promise}
-                    Loading...
-                {:then bill}
-                    {#each bill.actions as action}
-                        <li>{action.actionDate} — {action.text} [{action.actionCode}]</li>
-                    {/each}
-                {/await}
+                <Timeline>
+                    {#await bill_promise}
+                        Loading...
+                    {:then bill}
+                        {#each bill.actions.reverse() as action}
+                        <TimelineItem>
+                            <TimelineSeparator>
+                                <TimelineDot />
+                                <TimelineConnector />
+                            </TimelineSeparator>
+                            <TimelineContent>
+                                <p>{action.actionDate} — {action.text} [{action.actionCode}]</p>
+                            </TimelineContent>
+                        </TimelineItem>
+                        {/each}
+                    {/await}
+                </Timeline>
             </ul>
         </div>
         <div class="p-4">
             <h3 class="mb-2 text-lg font-bold">Track Bill</h3>
             <ul class="space-y-2">
                 <input type="email" bind:value={email} class="w-[300px] h-full px-5 py-2 rounded-full border border-1.5 border-gray-500 outline-accent-bg text-md" placeholder="Enter your email">
-                <button onclick={subscribe} class="px-5 py-2 m-2 bg-purple-500 text-white rounded hover:cursor-pointer">Subscribe</button>
+                <button onclick={subscribe} class="px-5 py-2 m-2 bg-purple-900 text-white rounded hover:cursor-pointer">Subscribe</button>
             </ul>
         </div>
     </main>

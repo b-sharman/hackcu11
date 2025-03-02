@@ -28,7 +28,7 @@ let results_promise = $derived.by(async () => {
 </header>
 
 <div class="mt-8 mb-4 flex justify-center">
-  <main class="max-w-[1000px] mx-4">
+  <main class="w-full max-w-[1000px] mx-4">
 
     {#await results_promise}
       <div class="w-full text-center">

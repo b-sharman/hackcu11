@@ -1,8 +1,12 @@
 from flask import Flask
 from flask import jsonify, request
+import requests
 import sqlite3
+from dotenv import load_dotenv
+import os
 
 app = Flask(__name__)
+load_dotenv(".env.local")
 
 TYPE_MAP = {
     'HCONRES': 'house-concurrent-resolution',
@@ -17,6 +21,14 @@ TYPE_MAP = {
 
 def get_url(bill):
     return f"https://www.congress.gov/bill/{bill['congress']}th-congress/{TYPE_MAP[bill['type']]}/{bill['number']}"
+
+def get_subjects(bill):
+    response = requests.get(f"https://api.congress.gov/v3/bill/{bill['congress']}/{bill['type'].lower()}/{bill['number']}/subjects?api_key={os.getenv('VITE_API_KEY')}&format=json&limit=250").json()
+    return [subject['name'] for subject in response['subjects']['legislativeSubjects']]
+
+def get_summary(bill):
+    response = requests.get(f"https://api.congress.gov/v3/bill/{bill['congress']}/{bill['type'].lower()}/{bill['number']}/summaries?api_key={os.getenv('VITE_API_KEY')}&format=json&limit=1").json()
+    return response['summaries'][0]['text']
 
 def map_to_dict(bill):
     return {
@@ -36,6 +48,36 @@ def search():
     db = sqlite3.connect('database.db')
     cur = db.cursor()
     bills = [map_to_dict(bill)for bill in cur.execute(r"SELECT * FROM bills WHERE title LIKE ? ORDER BY congress DESC LIMIT 10", [f"%{query}%"]).fetchall()]
-    res = jsonify([bill | {'url': get_url(bill)} for bill in bills])
+    res = jsonify([bill | {
+        'url': get_url(bill)
+    } for bill in bills])
     res.headers.add('Access-Control-Allow-Origin', '*')
     return res
+
+@app.route('/summary')
+def summary():
+    id = request.args.get('id')
+    db = sqlite3.connect('database.db')
+    cur = db.cursor()
+
+    bill = map_to_dict(cur.execute("SELECT * FROM bills WHERE id = ?", [id]).fetchone())
+    res = jsonify({'summary': get_summary(bill)})
+    res.headers.add('Access-Control-Allow-Origin', '*')
+    return res
+
+# @app.route("/bill")
+# def bill():
+#     id = request.args.get('id')
+#     db = sqlite3.connect('database.db')
+#     cur = db.cursor()
+#     bill = map_to_dict(cur.execute("SELECT * FROM bills WHERE id = ?", [id]).fetchone())
+
+#     bill_data = requests.get(f"https://api.congress.gov/v3/bill/{bill['congress']}/{bill['type'].lower()}/{bill['number']}?api_key={os.getenv('VITE_API_KEY')}&format=json").json()
+
+
+#     res = jsonify(bill | {
+#         'summary': get_summary(bill)
+#     })
+#     res.headers.add('Access-Control-Allow-Origin', '*')
+#     return res
+

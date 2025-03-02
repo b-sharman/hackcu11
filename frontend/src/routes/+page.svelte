@@ -20,18 +20,17 @@ let results_promise = $derived.by(async () => {
   <p class="text-gray-600">Visualize public data from the U.S. Congress</p>
 </header>
 
-<main class="max-w-[1000px] mx-auto pb-4">
+<main class="max-w-[1000px] mx-auto px-4 pb-4">
   <div class="my-16 flex justify-center gap-4">
     <input
       bind:value={searchText}
-      class="h-full px-4 py-1.5 rounded border border-black h-[30px]"
+      class="w-[400px] h-full px-4 py-1.5 rounded-full border border-2 border-gray-500 outline-accent-bg text-lg"
       placeholder="Search for a bill to learn more about it"
       type="text"
     />
-    <button class="h-full bg-accent-bg text-accent-fg px-4 py-1.5 rounded cursor-pointer">Search</button>
   </div>
 
-  <div class="rounded-xl border border-gray-200">
+  <div class="rounded-xl border border-gray-200 overflow-hidden">
     {#await results_promise}
       <p class="m-4">Loading...</p>
       {:then results}
@@ -50,5 +49,4 @@ let results_promise = $derived.by(async () => {
         <p class="m-4"><span class="text-red-500">Error:</span> {error.message}</p>
     {/await}
   </div>
-
 </main>

@@ -57,30 +57,6 @@ def map_to_dict(bill):
         'congress': bill[7],
     }
 
-def map_to_df_dict(bill):
-    update = pd.to_datetime(bill[4].split('T')[0])
-    introduced = pd.to_datetime(bill[3])
-
-    duration = (update - introduced).days
-
-    print(bill[1])
-
-    return [
-        float(bill[1]),
-        float(bill[7]),
-        float(duration),
-        float(bill[6] == 'HCONRES'),
-        float(bill[6] == 'HJRES'),
-        float(bill[6] == 'HR'),
-        float(bill[6] == 'HRES'),
-        float(bill[6] == 'S'),
-        float(bill[6] == 'SCONRES'),
-        float(bill[6] == 'SJRES'),
-        float(bill[6] == 'SRES'),
-        float(bill[5] == 'House'),
-        float(bill[5] == 'Senate'),
-    ]
-
 @app.route("/search")
 def search():
     query = request.args.get('q')
@@ -106,6 +82,28 @@ def summary():
     res = jsonify(summary)
     res.headers.add('Access-Control-Allow-Origin', '*')
     return res, status
+
+def map_to_df_dict(bill):
+    update = pd.to_datetime(bill[4].split('T')[0])
+    introduced = pd.to_datetime(bill[3])
+
+    duration = (update - introduced).days
+
+    return [
+        float(bill[1]),
+        float(bill[7]),
+        float(duration),
+        float(bill[6] == 'HCONRES'),
+        float(bill[6] == 'HJRES'),
+        float(bill[6] == 'HR'),
+        float(bill[6] == 'HRES'),
+        float(bill[6] == 'S'),
+        float(bill[6] == 'SCONRES'),
+        float(bill[6] == 'SJRES'),
+        float(bill[6] == 'SRES'),
+        float(bill[5] == 'House'),
+        float(bill[5] == 'Senate'),
+    ]
 
 def get_prediction(bill):
     prediction = model.predict([bill])

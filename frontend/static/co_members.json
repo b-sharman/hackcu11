@@ -1,0 +1,1041 @@
+{
+    "members": [
+        {
+            "bioguideId": "H000273",
+            "depiction": {
+                "attribution": "<a href=\"http://www.senate.gov/artandhistory/history/common/generic/Photo_Collection_of_the_Senate_Historical_Office.htm\">Courtesy U.S. Senate Historical Office</a>",
+                "imageUrl": "https://www.congress.gov/img/member/h000273_200.jpg"
+            },
+            "name": "Hickenlooper, John W.",
+            "partyName": "Democratic",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "Senate",
+                        "startYear": 2021
+                    }
+                ]
+            },
+            "updateDate": "2025-02-22T13:42:18Z",
+            "url": "https://api.congress.gov/v3/member/H000273?format=json"
+        },
+        {
+            "bioguideId": "B001267",
+            "depiction": {
+                "attribution": "<a href=\"http://www.senate.gov/artandhistory/history/common/generic/Photo_Collection_of_the_Senate_Historical_Office.htm\">Courtesy U.S. Senate Historical Office</a>",
+                "imageUrl": "https://www.congress.gov/img/member/b001267_200.jpg"
+            },
+            "name": "Bennet, Michael F.",
+            "partyName": "Democratic",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "Senate",
+                        "startYear": 2009
+                    }
+                ]
+            },
+            "updateDate": "2025-02-15T13:42:12Z",
+            "url": "https://api.congress.gov/v3/member/B001267?format=json"
+        },
+        {
+            "bioguideId": "H001100",
+            "depiction": {
+                "attribution": "Image courtesy of the Member",
+                "imageUrl": "https://www.congress.gov/img/member/67742c5e0b34857ecc9090d1_200.jpg"
+            },
+            "district": 3,
+            "name": "Hurd, Jeff",
+            "partyName": "Republican",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "startYear": 2025
+                    }
+                ]
+            },
+            "updateDate": "2025-01-21T18:00:52Z",
+            "url": "https://api.congress.gov/v3/member/H001100?format=json"
+        },
+        {
+            "bioguideId": "E000300",
+            "depiction": {
+                "attribution": "Image courtesy of the Member",
+                "imageUrl": "https://www.congress.gov/img/member/677425730b34857ecc909083_200.jpg"
+            },
+            "district": 8,
+            "name": "Evans, Gabe",
+            "partyName": "Republican",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "startYear": 2025
+                    }
+                ]
+            },
+            "updateDate": "2025-01-21T18:00:52Z",
+            "url": "https://api.congress.gov/v3/member/E000300?format=json"
+        },
+        {
+            "bioguideId": "C001137",
+            "depiction": {
+                "attribution": "Image courtesy of the Member",
+                "imageUrl": "https://www.congress.gov/img/member/677424810b34857ecc909071_200.jpg"
+            },
+            "district": 5,
+            "name": "Crank, Jeff",
+            "partyName": "Republican",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "startYear": 2025
+                    }
+                ]
+            },
+            "updateDate": "2025-01-21T18:00:52Z",
+            "url": "https://api.congress.gov/v3/member/C001137?format=json"
+        },
+        {
+            "bioguideId": "P000620",
+            "depiction": {
+                "attribution": "Image courtesy of the Member",
+                "imageUrl": "https://www.congress.gov/img/member/p000620_200.jpg"
+            },
+            "district": 7,
+            "name": "Pettersen, Brittany",
+            "partyName": "Democratic",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "startYear": 2023
+                    }
+                ]
+            },
+            "updateDate": "2025-01-21T18:00:52Z",
+            "url": "https://api.congress.gov/v3/member/P000620?format=json"
+        },
+        {
+            "bioguideId": "L000604",
+            "depiction": {
+                "attribution": "Image courtesy of the Member",
+                "imageUrl": "https://www.congress.gov/img/member/668e94fd658443009a697c9e_200.jpg"
+            },
+            "district": 4,
+            "name": "Lopez, Greg",
+            "partyName": "Republican",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 2025,
+                        "startYear": 2024
+                    }
+                ]
+            },
+            "updateDate": "2025-01-06T13:05:04Z",
+            "url": "https://api.congress.gov/v3/member/L000604?format=json"
+        },
+        {
+            "bioguideId": "L000564",
+            "depiction": {
+                "attribution": "Image courtesy of the Member",
+                "imageUrl": "https://www.congress.gov/img/member/l000564_200.jpg"
+            },
+            "district": 5,
+            "name": "Lamborn, Doug",
+            "partyName": "Republican",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 2025,
+                        "startYear": 2007
+                    }
+                ]
+            },
+            "updateDate": "2025-01-06T13:03:23Z",
+            "url": "https://api.congress.gov/v3/member/L000564?format=json"
+        },
+        {
+            "bioguideId": "C001134",
+            "depiction": {
+                "attribution": "Image courtesy of the Member",
+                "imageUrl": "https://www.congress.gov/img/member/c001134_200.jpg"
+            },
+            "district": 8,
+            "name": "Caraveo, Yadira",
+            "partyName": "Democratic",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 2025,
+                        "startYear": 2023
+                    }
+                ]
+            },
+            "updateDate": "2025-01-06T12:49:07Z",
+            "url": "https://api.congress.gov/v3/member/C001134?format=json"
+        },
+        {
+            "bioguideId": "B001297",
+            "depiction": {
+                "attribution": "Congressional Pictorial Directory",
+                "imageUrl": "https://www.congress.gov/img/member/115_rp_co_4_buck_ken_200.jpg"
+            },
+            "district": 4,
+            "name": "Buck, Ken",
+            "partyName": "Republican",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 2024,
+                        "startYear": 2015
+                    }
+                ]
+            },
+            "updateDate": "2025-01-03T18:12:55Z",
+            "url": "https://api.congress.gov/v3/member/B001297?format=json"
+        },
+        {
+            "bioguideId": "B000825",
+            "depiction": {
+                "attribution": "Image courtesy of the Member",
+                "imageUrl": "https://www.congress.gov/img/member/b000825_200.jpg"
+            },
+            "district": 4,
+            "name": "Boebert, Lauren",
+            "partyName": "Republican",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "startYear": 2021
+                    }
+                ]
+            },
+            "updateDate": "2024-06-08T18:40:16Z",
+            "url": "https://api.congress.gov/v3/member/B000825?format=json"
+        },
+        {
+            "bioguideId": "C001121",
+            "depiction": {
+                "attribution": "Image courtesy of the Member",
+                "imageUrl": "https://www.congress.gov/img/member/c001121_200.jpg"
+            },
+            "district": 6,
+            "name": "Crow, Jason",
+            "partyName": "Democratic",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "startYear": 2019
+                    }
+                ]
+            },
+            "updateDate": "2024-06-08T18:40:16Z",
+            "url": "https://api.congress.gov/v3/member/C001121?format=json"
+        },
+        {
+            "bioguideId": "N000191",
+            "depiction": {
+                "attribution": "Image courtesy of the Member",
+                "imageUrl": "https://www.congress.gov/img/member/n000191_200.jpg"
+            },
+            "district": 2,
+            "name": "Neguse, Joe",
+            "partyName": "Democratic",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "startYear": 2019
+                    }
+                ]
+            },
+            "updateDate": "2024-06-08T18:40:16Z",
+            "url": "https://api.congress.gov/v3/member/N000191?format=json"
+        },
+        {
+            "bioguideId": "D000197",
+            "depiction": {
+                "attribution": "Congressional Pictorial Directory",
+                "imageUrl": "https://www.congress.gov/img/member/116_rp_co_1_degette_diana_200.jpg"
+            },
+            "district": 1,
+            "name": "DeGette, Diana",
+            "partyName": "Democratic",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "startYear": 1997
+                    }
+                ]
+            },
+            "updateDate": "2024-06-08T18:40:16Z",
+            "url": "https://api.congress.gov/v3/member/D000197?format=json"
+        },
+        {
+            "bioguideId": "J000148",
+            "depiction": {
+                "attribution": "Collection of the U.S. House of Representatives",
+                "imageUrl": "https://www.congress.gov/img/member/j000148_200.jpg"
+            },
+            "district": 4,
+            "name": "Johnson, James P. (Jim)",
+            "partyName": "Republican",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 1981,
+                        "startYear": 1973
+                    }
+                ]
+            },
+            "updateDate": "2023-11-22T17:32:53Z",
+            "url": "https://api.congress.gov/v3/member/J000148?format=json"
+        },
+        {
+            "bioguideId": "S000142",
+            "depiction": {
+                "attribution": "Collection of the U.S. House of Representatives",
+                "imageUrl": "https://www.congress.gov/img/member/s000142_200.jpg"
+            },
+            "district": 1,
+            "name": "Schroeder, Patricia",
+            "partyName": "Democratic",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 1997,
+                        "startYear": 1973
+                    }
+                ]
+            },
+            "updateDate": "2023-03-14T17:10:50Z",
+            "url": "https://api.congress.gov/v3/member/S000142?format=json"
+        },
+        {
+            "bioguideId": "P000593",
+            "depiction": {
+                "attribution": "Image courtesy of the Member",
+                "imageUrl": "https://www.congress.gov/img/member/p000593_200.jpg"
+            },
+            "district": 7,
+            "name": "Perlmutter, Ed",
+            "partyName": "Democratic",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 2023,
+                        "startYear": 2007
+                    }
+                ]
+            },
+            "updateDate": "2023-01-26T16:10:43Z",
+            "url": "https://api.congress.gov/v3/member/P000593?format=json"
+        },
+        {
+            "bioguideId": "G000562",
+            "depiction": {
+                "attribution": "<a href=\"http://www.senate.gov/artandhistory/history/common/generic/Photo_Collection_of_the_Senate_Historical_Office.htm\">Courtesy U.S. Senate Historical Office</a>",
+                "imageUrl": "https://www.congress.gov/img/member/g000562_200.jpg"
+            },
+            "name": "Gardner, Cory",
+            "partyName": "Republican",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 2015,
+                        "startYear": 2011
+                    },
+                    {
+                        "chamber": "Senate",
+                        "endYear": 2021,
+                        "startYear": 2015
+                    }
+                ]
+            },
+            "updateDate": "2022-12-16T21:56:51Z",
+            "url": "https://api.congress.gov/v3/member/G000562?format=json"
+        },
+        {
+            "bioguideId": "T000470",
+            "depiction": {
+                "attribution": "Collection of the U.S. House of Representatives",
+                "imageUrl": "https://www.congress.gov/img/member/t000470_200.jpg"
+            },
+            "district": 3,
+            "name": "Tipton, Scott  R.",
+            "partyName": "Republican",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 2021,
+                        "startYear": 2011
+                    }
+                ]
+            },
+            "updateDate": "2022-12-16T21:56:51Z",
+            "url": "https://api.congress.gov/v3/member/T000470?format=json"
+        },
+        {
+            "bioguideId": "S001163",
+            "depiction": {
+                "attribution": "<a href=\"http://www.senate.gov/artandhistory/history/common/generic/Photo_Collection_of_the_Senate_Historical_Office.htm\">Courtesy U.S. Senate Historical Office</a>",
+                "imageUrl": "https://www.congress.gov/img/member/s001163_200.jpg"
+            },
+            "name": "Salazar, Ken",
+            "partyName": "Democratic",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "Senate",
+                        "endYear": 2009,
+                        "startYear": 2005
+                    }
+                ]
+            },
+            "updateDate": "2022-12-16T21:56:51Z",
+            "url": "https://api.congress.gov/v3/member/S001163?format=json"
+        },
+        {
+            "bioguideId": "C001077",
+            "depiction": {
+                "attribution": "Congressional Pictorial Directory",
+                "imageUrl": "https://www.congress.gov/img/member/115_rp_co_6_coffman_mike_200.jpg"
+            },
+            "district": 6,
+            "name": "Coffman, Mike",
+            "partyName": "Republican",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 2019,
+                        "startYear": 2009
+                    }
+                ]
+            },
+            "updateDate": "2022-12-16T21:56:51Z",
+            "url": "https://api.congress.gov/v3/member/C001077?format=json"
+        },
+        {
+            "bioguideId": "M001172",
+            "depiction": {
+                "attribution": "Collection of the U.S. House of Representatives",
+                "imageUrl": "https://www.congress.gov/img/member/m001172_200.jpg"
+            },
+            "district": 4,
+            "name": "Markey, Betsy",
+            "partyName": "Democratic",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 2011,
+                        "startYear": 2009
+                    }
+                ]
+            },
+            "updateDate": "2022-12-16T21:56:51Z",
+            "url": "https://api.congress.gov/v3/member/M001172?format=json"
+        },
+        {
+            "bioguideId": "P000598",
+            "depiction": {
+                "attribution": "Collection of the U.S. House of Representatives",
+                "imageUrl": "https://www.congress.gov/img/member/p000598_200.jpg"
+            },
+            "district": 2,
+            "name": "Polis, Jared",
+            "partyName": "Democratic",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 2019,
+                        "startYear": 2009
+                    }
+                ]
+            },
+            "updateDate": "2022-12-16T21:56:51Z",
+            "url": "https://api.congress.gov/v3/member/P000598?format=json"
+        },
+        {
+            "bioguideId": "U000038",
+            "depiction": {
+                "attribution": "<a href=\"http://www.senate.gov/artandhistory/history/common/generic/Photo_Collection_of_the_Senate_Historical_Office.htm\">Courtesy U.S. Senate Historical Office</a>",
+                "imageUrl": "https://www.congress.gov/img/member/u000038_200.jpg"
+            },
+            "name": "Udall, Mark",
+            "partyName": "Democratic",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 2009,
+                        "startYear": 1999
+                    },
+                    {
+                        "chamber": "Senate",
+                        "endYear": 2015,
+                        "startYear": 2009
+                    }
+                ]
+            },
+            "updateDate": "2022-12-16T21:56:51Z",
+            "url": "https://api.congress.gov/v3/member/U000038?format=json"
+        },
+        {
+            "bioguideId": "T000458",
+            "depiction": {
+                "attribution": "Collection of the U.S. House of Representatives",
+                "imageUrl": "https://www.congress.gov/img/member/t000458_200.jpg"
+            },
+            "district": 6,
+            "name": "Tancredo, Thomas G.",
+            "partyName": "Republican",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 2009,
+                        "startYear": 1999
+                    }
+                ]
+            },
+            "updateDate": "2022-12-16T21:56:51Z",
+            "url": "https://api.congress.gov/v3/member/T000458?format=json"
+        },
+        {
+            "bioguideId": "S000112",
+            "depiction": {
+                "attribution": "Collection of the U.S. House of Representatives",
+                "imageUrl": "https://www.congress.gov/img/member/s000112_200.jpg"
+            },
+            "district": 4,
+            "name": "Schaffer, Bob",
+            "partyName": "Republican",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 2003,
+                        "startYear": 1997
+                    }
+                ]
+            },
+            "updateDate": "2022-12-16T21:56:51Z",
+            "url": "https://api.congress.gov/v3/member/S000112?format=json"
+        },
+        {
+            "bioguideId": "W000647",
+            "depiction": {
+                "attribution": "<a href=\"http://www.senate.gov/artandhistory/history/common/generic/Photo_Collection_of_the_Senate_Historical_Office.htm\">Courtesy U.S. Senate Historical Office</a>",
+                "imageUrl": "https://www.congress.gov/img/member/w000647_200.jpg"
+            },
+            "name": "Wirth, Timothy",
+            "partyName": "Democratic",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 1987,
+                        "startYear": 1975
+                    },
+                    {
+                        "chamber": "Senate",
+                        "endYear": 1993,
+                        "startYear": 1987
+                    }
+                ]
+            },
+            "updateDate": "2022-12-16T21:56:51Z",
+            "url": "https://api.congress.gov/v3/member/W000647?format=json"
+        },
+        {
+            "bioguideId": "S000991",
+            "depiction": {
+                "attribution": "Collection of the U.S. House of Representatives",
+                "imageUrl": "https://www.congress.gov/img/member/s000991_200.jpg"
+            },
+            "district": 3,
+            "name": "Strang, Michael L.",
+            "partyName": "Republican",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 1987,
+                        "startYear": 1985
+                    }
+                ]
+            },
+            "updateDate": "2022-12-16T21:56:51Z",
+            "url": "https://api.congress.gov/v3/member/S000991?format=json"
+        },
+        {
+            "bioguideId": "S000462",
+            "depiction": {
+                "attribution": "Collection of the U.S. House of Representatives",
+                "imageUrl": "https://www.congress.gov/img/member/s000462_200.jpg"
+            },
+            "district": 2,
+            "name": "Skaggs, David E.",
+            "partyName": "Democratic",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 1999,
+                        "startYear": 1987
+                    }
+                ]
+            },
+            "updateDate": "2022-12-16T21:56:51Z",
+            "url": "https://api.congress.gov/v3/member/S000462?format=json"
+        },
+        {
+            "bioguideId": "S000109",
+            "depiction": {
+                "attribution": "Collection of the U.S. House of Representatives",
+                "imageUrl": "https://www.congress.gov/img/member/s000109_200.jpg"
+            },
+            "district": 6,
+            "name": "Schaefer, Dan",
+            "partyName": "Republican",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 1999,
+                        "startYear": 1983
+                    }
+                ]
+            },
+            "updateDate": "2022-12-16T21:56:51Z",
+            "url": "https://api.congress.gov/v3/member/S000109?format=json"
+        },
+        {
+            "bioguideId": "M000477",
+            "depiction": {
+                "attribution": "Collection of the U.S. House of Representatives",
+                "imageUrl": "https://www.congress.gov/img/member/m000477_200.jpg"
+            },
+            "district": 3,
+            "name": "McInnis, Scott",
+            "partyName": "Republican",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 2005,
+                        "startYear": 1993
+                    }
+                ]
+            },
+            "updateDate": "2022-12-16T21:56:51Z",
+            "url": "https://api.congress.gov/v3/member/M000477?format=json"
+        },
+        {
+            "bioguideId": "H000317",
+            "depiction": {
+                "attribution": "<a href=\"http://www.senate.gov/artandhistory/history/common/generic/Photo_Collection_of_the_Senate_Historical_Office.htm\">Courtesy U.S. Senate Historical Office</a>",
+                "imageUrl": "https://www.congress.gov/img/member/h000317_200.jpg"
+            },
+            "name": "Haskell, Floyd K.",
+            "partyName": "Democratic",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "Senate",
+                        "endYear": 1979,
+                        "startYear": 1973
+                    }
+                ]
+            },
+            "updateDate": "2022-12-16T21:56:51Z",
+            "url": "https://api.congress.gov/v3/member/H000317?format=json"
+        },
+        {
+            "bioguideId": "H000287",
+            "depiction": {
+                "attribution": "<a href=\"http://www.senate.gov/artandhistory/history/common/generic/Photo_Collection_of_the_Senate_Historical_Office.htm\">Courtesy U.S. Senate Historical Office</a>",
+                "imageUrl": "https://www.congress.gov/img/member/h000287_200.jpg"
+            },
+            "name": "Hart, Gary W.",
+            "partyName": "Democratic",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "Senate",
+                        "endYear": 1987,
+                        "startYear": 1975
+                    }
+                ]
+            },
+            "updateDate": "2022-12-16T21:56:51Z",
+            "url": "https://api.congress.gov/v3/member/H000287?format=json"
+        },
+        {
+            "bioguideId": "D000409",
+            "depiction": {
+                "attribution": "<a href=\"http://www.senate.gov/artandhistory/history/common/generic/Photo_Collection_of_the_Senate_Historical_Office.htm\">Courtesy U.S. Senate Historical Office</a>",
+                "imageUrl": "https://www.congress.gov/img/member/d000409_200.jpg"
+            },
+            "name": "Dominick, Peter H.",
+            "partyName": "Republican",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 1963,
+                        "startYear": 1961
+                    },
+                    {
+                        "chamber": "Senate",
+                        "endYear": 1975,
+                        "startYear": 1973
+                    }
+                ]
+            },
+            "updateDate": "2022-12-16T21:56:51Z",
+            "url": "https://api.congress.gov/v3/member/D000409?format=json"
+        },
+        {
+            "bioguideId": "S001158",
+            "depiction": {
+                "attribution": "Image courtesy of the U.S. House of Representatives Photography Office",
+                "imageUrl": "https://www.congress.gov/img/member/s001158_200.jpg"
+            },
+            "district": 3,
+            "name": "Salazar, John T.",
+            "partyName": "Democratic",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 2011,
+                        "startYear": 2005
+                    }
+                ]
+            },
+            "updateDate": "2022-12-16T21:56:51Z",
+            "url": "https://api.congress.gov/v3/member/S001158?format=json"
+        },
+        {
+            "bioguideId": "B001240",
+            "depiction": {
+                "attribution": "Image, Congressional Pictorial Directory, 109th.",
+                "imageUrl": "https://www.congress.gov/img/member/b001240_200.jpg"
+            },
+            "district": 7,
+            "name": "Beauprez, Bob",
+            "partyName": "Republican",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 2007,
+                        "startYear": 2003
+                    }
+                ]
+            },
+            "updateDate": "2022-12-16T21:56:51Z",
+            "url": "https://api.congress.gov/v3/member/B001240?format=json"
+        },
+        {
+            "bioguideId": "M001152",
+            "depiction": {
+                "attribution": "Image courtesy of the U.S. House of Representatives Photography Office",
+                "imageUrl": "https://www.congress.gov/img/member/m001152_200.jpg"
+            },
+            "district": 4,
+            "name": "Musgrave, Marilyn N.",
+            "partyName": "Republican",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 2009,
+                        "startYear": 2003
+                    }
+                ]
+            },
+            "updateDate": "2022-12-16T21:56:51Z",
+            "url": "https://api.congress.gov/v3/member/M001152?format=json"
+        },
+        {
+            "bioguideId": "C000077",
+            "depiction": {
+                "attribution": "<a href=\"http://www.senate.gov/artandhistory/history/common/generic/Photo_Collection_of_the_Senate_Historical_Office.htm\">Courtesy U.S. Senate Historical Office</a>",
+                "imageUrl": "https://www.congress.gov/img/member/c000077_200.jpg"
+            },
+            "name": "Campbell, Ben Nighthorse",
+            "partyName": "Republican",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 1993,
+                        "startYear": 1987
+                    },
+                    {
+                        "chamber": "Senate",
+                        "endYear": 2005,
+                        "startYear": 1993
+                    }
+                ]
+            },
+            "updateDate": "2022-12-16T21:56:51Z",
+            "url": "https://api.congress.gov/v3/member/C000077?format=json"
+        },
+        {
+            "bioguideId": "B000919",
+            "depiction": {
+                "attribution": "<a href=\"http://www.senate.gov/artandhistory/history/common/generic/Photo_Collection_of_the_Senate_Historical_Office.htm\">Courtesy U.S. Senate Historical Office</a>",
+                "imageUrl": "https://www.congress.gov/img/member/b000919_200.jpg"
+            },
+            "name": "Brown, Hank",
+            "partyName": "Republican",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 1991,
+                        "startYear": 1981
+                    },
+                    {
+                        "chamber": "Senate",
+                        "endYear": 1997,
+                        "startYear": 1991
+                    }
+                ]
+            },
+            "updateDate": "2022-12-16T21:56:51Z",
+            "url": "https://api.congress.gov/v3/member/B000919?format=json"
+        },
+        {
+            "bioguideId": "B000893",
+            "depiction": {
+                "attribution": "Collection of the U.S. House of Representatives",
+                "imageUrl": "https://www.congress.gov/img/member/b000893_200.jpg"
+            },
+            "district": 2,
+            "name": "Brotzman, Donald G.",
+            "partyName": "Republican",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 1965,
+                        "startYear": 1963
+                    },
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 1975,
+                        "startYear": 1967
+                    }
+                ]
+            },
+            "updateDate": "2022-12-16T21:56:51Z",
+            "url": "https://api.congress.gov/v3/member/B000893?format=json"
+        },
+        {
+            "bioguideId": "A000219",
+            "depiction": {
+                "attribution": "<a href=\"http://www.senate.gov/artandhistory/history/common/generic/Photo_Collection_of_the_Senate_Historical_Office.htm\">Courtesy U.S. Senate Historical Office</a>",
+                "imageUrl": "https://www.congress.gov/img/member/a000219_200.jpg"
+            },
+            "name": "Armstrong, William L.",
+            "partyName": "Republican",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 1979,
+                        "startYear": 1973
+                    },
+                    {
+                        "chamber": "Senate",
+                        "endYear": 1991,
+                        "startYear": 1979
+                    }
+                ]
+            },
+            "updateDate": "2022-12-16T21:56:51Z",
+            "url": "https://api.congress.gov/v3/member/A000219?format=json"
+        },
+        {
+            "bioguideId": "A000109",
+            "depiction": {
+                "attribution": "<a href=\"http://www.senate.gov/artandhistory/history/common/generic/Photo_Collection_of_the_Senate_Historical_Office.htm\">Courtesy U.S. Senate Historical Office</a>",
+                "imageUrl": "https://www.congress.gov/img/member/a000109_200.jpg"
+            },
+            "name": "Allard, Wayne",
+            "partyName": "Republican",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 1997,
+                        "startYear": 1991
+                    },
+                    {
+                        "chamber": "Senate",
+                        "endYear": 2009,
+                        "startYear": 1997
+                    }
+                ]
+            },
+            "updateDate": "2022-12-16T21:56:51Z",
+            "url": "https://api.congress.gov/v3/member/A000109?format=json"
+        },
+        {
+            "bioguideId": "E000240",
+            "depiction": {
+                "attribution": "Collection of the U.S. House of Representatives",
+                "imageUrl": "https://www.congress.gov/img/member/e000240_200.jpg"
+            },
+            "district": 3,
+            "name": "Evans, Frank E.",
+            "partyName": "Democratic",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 1979,
+                        "startYear": 1965
+                    }
+                ]
+            },
+            "updateDate": "2022-12-16T21:56:51Z",
+            "url": "https://api.congress.gov/v3/member/E000240?format=json"
+        },
+        {
+            "bioguideId": "K000322",
+            "depiction": {
+                "attribution": "Collection of the U.S. House of Representatives",
+                "imageUrl": "https://www.congress.gov/img/member/k000322_200.jpg"
+            },
+            "district": 5,
+            "name": "Kramer, Ken",
+            "partyName": "Republican",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 1987,
+                        "startYear": 1979
+                    }
+                ]
+            },
+            "updateDate": "2022-12-16T21:56:51Z",
+            "url": "https://api.congress.gov/v3/member/K000322?format=json"
+        },
+        {
+            "bioguideId": "K000304",
+            "district": 3,
+            "name": "Kogovsek, Ray",
+            "partyName": "Democratic",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 1985,
+                        "startYear": 1979
+                    }
+                ]
+            },
+            "updateDate": "2022-12-16T21:56:51Z",
+            "url": "https://api.congress.gov/v3/member/K000304?format=json"
+        },
+        {
+            "bioguideId": "H000444",
+            "depiction": {
+                "attribution": "Collection of the U.S. House of Representatives",
+                "imageUrl": "https://www.congress.gov/img/member/h000444_200.jpg"
+            },
+            "district": 5,
+            "name": "Hefley, Joel",
+            "partyName": "Republican",
+            "state": "Colorado",
+            "terms": {
+                "item": [
+                    {
+                        "chamber": "House of Representatives",
+                        "endYear": 2007,
+                        "startYear": 1987
+                    }
+                ]
+            },
+            "updateDate": "2022-12-16T21:56:51Z",
+            "url": "https://api.congress.gov/v3/member/H000444?format=json"
+        }
+    ],
+    "pagination": {
+        "count": 46
+    },
+    "request": {
+        "contentType": "application/json",
+        "format": "json"
+    }
+}

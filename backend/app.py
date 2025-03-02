@@ -60,6 +60,30 @@ def get_related(bill):
     return [{'id': bill['id'], 'title': bill['title'],'url': f"/bill/{bill['id']}"} for bill in [map_to_dict(b) for b in bills]]
 
 
+def get_prediction(bill):
+    date_introduced = pd.to_datetime(bill['date_introduced'].split("T")[0])
+    date_updated = pd.to_datetime(bill['date_updated'].split("T")[0])
+    duration = (date_updated - date_introduced).days
+
+    X = pd.DataFrame({
+        'number': [int(bill['number'])],
+        'congress': [int(bill['congress'])],
+        'duration': [duration],
+        'type_HCONRES': [int(bill['type'] == 'HCONRES')],
+        'type_HJRES': [int(bill['type'] == 'HJRES')],
+        'type_HR': [int(bill['type'] == 'HR')],
+        'type_HRES': [int(bill['type'] == 'HRES')],
+        'type_S': [int(bill['type'] == 'S')],
+        'type_SCONRES': [int(bill['type'] == 'SCONRES')],
+        'type_SJRES': [int(bill['type'] == 'SJRES')],
+        'type_SRES': [int(bill['type'] == 'SRES')],
+        'originChamber_House': [int(bill['origin'] == 'House')],
+        'originChamber_Senate': [int(bill['origin'] == 'Senate')],
+    })
+
+    return {'probability': model.predict_proba(X)[0][1]}
+
+
 def map_to_dict(bill):
     return {
         'id': bill[0],
@@ -112,36 +136,20 @@ def map_to_df_dict(bill):
         "originChamber": bill[5]
     }
 
-def get_prediction(bill):
-    df = pd.DataFrame.from_dict(bill)
-    df_encoded = pd.get_dummies(df, columns=['type', 'originChamber'])
-    df = df_encoded
-    prediction = model.predict(df)
-    probability = model.predict_proba(df)
+# def get_prediction(bill):
+#     df = pd.DataFrame.from_dict(bill)
+#     df_encoded = pd.get_dummies(df, columns=['type', 'originChamber'])
+#     df = df_encoded
 
-    if prediction[0] == 0:
-        prediction = 'No'
-    else:
-        prediction = 'Yes'
+#     prediction = model.predict(df)
+#     probability = model.predict_proba(df)
 
-    return {'prediction': prediction, 'probability': probability[0][1]}
+#     if prediction[0] == 0:
+#         prediction = 'No'
+#     else:
+#         prediction = 'Yes'
 
-@app.route('/predict')
-def predict():
-    number = request.args.get('number')
-    congress = request.args.get('congress')
-    duration = request.args.get('duration')
-    type = request.args.get('type')
-    originChamber = request.args.get('originChamber')
-
-    # id = request.args.get('id')
-    # db = sqlite3.connect('database.db')
-    # cur = db.cursor()
-    # bill = map_to_df_dict(cur.execute("SELECT * FROM bills WHERE id = ?", [id]).fetchone())
-    
-    res = jsonify({"probability": 0.75, "prediction": "Yes"})
-    res.headers.add('Access-Control-Allow-Origin', '*')
-    return res
+#     return {'prediction': prediction, 'probability': probability[0][1]}
 
 
 @app.route("/bill")
@@ -151,13 +159,11 @@ def bill():
     cur = db.cursor()
     bill_tuple = cur.execute("SELECT * FROM bills WHERE id = ?", [id]).fetchone()
     bill = map_to_dict(bill_tuple)
-    bill_df = map_to_df_dict(bill_tuple)
-    # prediction = get_prediction(bill_df);
-
+    
     bill_data = requests.get(f"https://api.congress.gov/v3/bill/{bill['congress']}/{bill['type'].lower()}/{bill['number']}?api_key={os.getenv('VITE_API_KEY')}&format=json").json()
 
     res = jsonify(bill | {
-        'prediction': {'prediction': 'No', 'probability': 0},
+        'prediction': get_prediction(bill),
         'subjects': get_subjects(bill),
         'summary': get_summary(bill),
         'actions': get_actions(bill),
@@ -167,6 +173,7 @@ def bill():
     })
     res.headers.add('Access-Control-Allow-Origin', '*')
     return res
+
 
 @app.route("/member")
 def member():

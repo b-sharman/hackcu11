@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 import os
 import pickle
 import pandas as pd
+import random
 
 with open('model.pkl', 'rb') as f:
     model = pickle.load(f)
@@ -77,6 +78,14 @@ def summary():
         res = jsonify({'exists': False})
         res.headers.add('Access-Control-Allow-Origin', '*')
         return res, 404
+
+@app.route('/predict')
+def predict():
+    df = pd.read_csv('newest_bills.csv')
+    rand = random.randint(0, len(df))
+    bill = df.iloc[rand]
+    prediction = model.predict([bill])
+    print(prediction)
 
 @app.route("/bill")
 def bill():
